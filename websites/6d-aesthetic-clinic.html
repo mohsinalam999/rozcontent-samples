@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<!--
+════════════════════════════════════════════════════════════════════════════════
+  RozContent — RESEARCH-TO-CONCEPT BRIEF (internal, not client copy)
+  Prospect: 6D Aesthetic Clinic — speculative sample rebuilt to the Elite
+  Agency Creative Standard (2026-10-12). Replaces the previous static demo.
+────────────────────────────────────────────────────────────────────────────────
+  AUDIENCE: Affluent Islamabad patients (F-7/F-6/E-7 catchment) comparing
+  3–4 aesthetic clinics on Google before booking; highest-value action =
+  a WhatsApp consultation booking on 0324 5495755.
+  3 PAIN POINTS / LEAKS IN CURRENT PRESENCE:
+   1. No website at all — a Google profile is the entire digital presence,
+      so searchers who want prices or a booking path find nothing to click.
+   2. Verified trust (4.8★ / 60 reviews) is stranded on Google and never
+      converted into a booking moment.
+   3. F-7/F-11 competitors with websites + price guides answer first and
+      capture the patient mid-decision.
+  CREATIVE CONCEPT (one sentence): "Luminous clinical luxury" — a dark-pine
+  and champagne-gold aesthetic-medicine identity where the clinic's verified
+  Google glow is staged like a flagship brand, and every screen ends in a
+  one-tap WhatsApp booking.
+  PALETTE / TYPE / MOTION: Deep pine (#0A2E29) + porcelain ivory (#F7F3EB) +
+  champagne gold (#C6A15B); oversized editorial serif display (system serif
+  stack) against a clean system sans; kinetic staggered headline reveals,
+  IntersectionObserver scroll reveals, subtle hero parallax, animated
+  counters, testimonial carousel, marquee treatment ticker — all disabled
+  under prefers-reduced-motion.
+  CONVERSION PATH: Hero WhatsApp CTA + glass booking card → per-treatment
+  WhatsApp deep links in the bento grid → process CTA → visit/CTA band →
+  sticky mobile WhatsApp bar. Every path lands on wa.me/923245495755.
+  VERIFIED PROOF (real, from the clinic's public Google presence):
+  4.8-star rating · 60 Google reviews · Dr. Saria Sheikh · Pakland Plaza,
+  F-7 Markaz, Islamabad · phone/WhatsApp 0324 5495755 · no website.
+  PLACEHOLDERS (visibly labelled "sample" on-page): all treatment prices,
+  appointment slot times, opening hours, testimonial quotes, treatment
+  descriptions. No medical outcome guarantees; no invented credentials.
+════════════════════════════════════════════════════════════════════════════════
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6D Aesthetic Clinic — F-7 Markaz, Islamabad | Rated 4.8★ on Google</title>
+<meta name="description" content="6D Aesthetic Clinic at Pakland Plaza, F-7 Markaz, Islamabad. Doctor-led skin, laser and aesthetic care rated 4.8 stars across 60 Google reviews. Book your consultation in one tap on WhatsApp.">
+<style>
+  /* ══════════════ TOKENS ══════════════ */
+  :root{
+    --pine-950:#051D19;
+    --pine-900:#0A2E29;
+    --pine-800:#0E3B34;
+    --pine-700:#14544A;
+    --teal:#1B7A68;
+    --sage:#A8C3B4;
+    --ivory:#F7F3EB;
+    --porcelain:#FCFAF5;
+    --gold:#C6A15B;
+    --gold-2:#E6CD8F;
+    --ink:#14211C;
+    --muted:#5D6F66;
+    --line:rgba(20,33,28,.12);
+    --line-light:rgba(247,243,235,.16);
+    --wa:#1FA855;
+    --wa-dark:#178A44;
+    --serif:"Playfair Display","Didot","Bodoni MT",Georgia,"Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    --r-lg:26px; --r-md:18px; --r-sm:12px;
+    --shadow-lg:0 30px 60px -18px rgba(5,29,25,.35);
+    --shadow-md:0 18px 38px -14px rgba(5,29,25,.25);
+    --ease:cubic-bezier(.22,.9,.28,1);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans);
+    color:var(--ink);
+    background:var(--porcelain);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--gold);color:var(--pine-950)}
+  a{text-decoration:none;color:inherit}
+  img,svg{display:block}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+  :focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:6px}
+
+  /* ══════════════ BUTTONS ══════════════ */
+  .btn{
+    position:relative;display:inline-flex;align-items:center;gap:9px;
+    padding:15px 28px;border-radius:999px;font-weight:700;font-size:.98rem;
+    overflow:hidden;isolation:isolate;white-space:nowrap;
+    transition:transform .3s var(--ease),box-shadow .3s var(--ease),background .3s var(--ease);
+  }
+  .btn::after{
+    content:"";position:absolute;inset:0;z-index:-1;
+    background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.45) 50%,transparent 70%);
+    transform:translateX(-120%);transition:transform .7s var(--ease);
+  }
+  .btn:hover{transform:translateY(-2px)}
+  .btn:hover::after{transform:translateX(120%)}
+  .btn:active{transform:translateY(0) scale(.98)}
+  .btn-wa{background:var(--wa);color:#fff;box-shadow:0 14px 30px -8px rgba(31,168,85,.55)}
+  .btn-wa:hover{background:var(--wa-dark)}
+  .btn-gold{background:linear-gradient(120deg,var(--gold),var(--gold-2));color:var(--pine-950);box-shadow:0 14px 30px -10px rgba(198,161,91,.6)}
+  .btn-ghost-l{background:rgba(247,243,235,.08);color:var(--ivory);border:1px solid rgba(247,243,235,.35);backdrop-filter:blur(6px)}
+  .btn-ghost-l:hover{background:rgba(247,243,235,.16)}
+  .btn-pine{background:var(--pine-900);color:var(--ivory)}
+  .btn-pine:hover{background:var(--pine-700)}
+  .btn svg{flex:none}
+
+  /* ══════════════ HEADER ══════════════ */
+  header{
+    position:fixed;inset:0 0 auto 0;z-index:80;
+    transition:background .4s var(--ease),box-shadow .4s var(--ease),backdrop-filter .4s;
+  }
+  header.scrolled{
+    background:rgba(6,32,27,.82);
+    backdrop-filter:blur(14px) saturate(1.3);
+    -webkit-backdrop-filter:blur(14px) saturate(1.3);
+    box-shadow:0 10px 30px rgba(0,0,0,.25);
+  }
+  .header-in{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 0}
+  .logo{display:flex;align-items:center;gap:12px;color:var(--ivory)}
+  .logo .mark{
+    width:44px;height:44px;border-radius:14px;flex:none;
+    background:linear-gradient(135deg,var(--gold),#9A7B3F);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--pine-950);font-family:var(--serif);font-weight:700;font-size:1.05rem;
+    box-shadow:0 8px 20px rgba(198,161,91,.4);
+  }
+  .logo b{font-family:var(--serif);font-weight:600;font-size:1.24rem;letter-spacing:.01em;line-height:1.1}
+  .logo small{display:block;font-family:var(--sans);font-weight:600;font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-2)}
+  nav.main-nav{display:flex;gap:30px;font-size:.92rem;font-weight:600;color:rgba(247,243,235,.78)}
+  nav.main-nav a{position:relative;padding:4px 0}
+  nav.main-nav a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--gold);transition:width .35s var(--ease)}
+  nav.main-nav a:hover{color:#fff}
+  nav.main-nav a:hover::after{width:100%}
+  header .btn{padding:11px 20px;font-size:.88rem}
+
+  /* ══════════════ HERO ══════════════ */
+  .hero{
+    position:relative;background:var(--pine-950);color:var(--ivory);
+    padding:158px 0 0;overflow:hidden;
+  }
+  .hero-bg{position:absolute;inset:0;pointer-events:none}
+  .hero-bg .glow{position:absolute;border-radius:50%;filter:blur(10px);will-change:transform}
+  .glow-a{width:640px;height:640px;top:-220px;right:-120px;background:radial-gradient(circle,rgba(198,161,91,.32),transparent 65%)}
+  .glow-b{width:560px;height:560px;bottom:-260px;left:-160px;background:radial-gradient(circle,rgba(27,122,104,.4),transparent 65%)}
+  .glow-c{width:340px;height:340px;top:34%;left:38%;background:radial-gradient(circle,rgba(230,205,143,.14),transparent 65%)}
+  .hero-rings{position:absolute;top:-140px;right:-90px;width:620px;height:620px;opacity:.5;will-change:transform}
+  .hero-grid-bg{
+    position:absolute;inset:0;opacity:.05;
+    background-image:linear-gradient(rgba(247,243,235,.6) 1px,transparent 1px),linear-gradient(90deg,rgba(247,243,235,.6) 1px,transparent 1px);
+    background-size:72px 72px;
+    -webkit-mask-image:radial-gradient(700px 500px at 70% 20%,#000,transparent 75%);
+            mask-image:radial-gradient(700px 500px at 70% 20%,#000,transparent 75%);
+  }
+  .hero-grid{position:relative;display:grid;grid-template-columns:1.12fr .88fr;gap:52px;align-items:center;padding-bottom:84px}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:9px;
+    font-size:.74rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-2);
+    border:1px solid rgba(198,161,91,.45);border-radius:999px;padding:7px 15px;margin-bottom:26px;
+    background:rgba(198,161,91,.08);
+  }
+  .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 0 rgba(198,161,91,.7);animation:pulse 2.4s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(198,161,91,.55)}70%{box-shadow:0 0 0 9px rgba(198,161,91,0)}100%{box-shadow:0 0 0 0 rgba(198,161,91,0)}}
+  h1{
+    font-family:var(--serif);font-weight:500;
+    font-size:clamp(2.7rem,5.6vw,4.6rem);line-height:1.04;letter-spacing:-.01em;margin-bottom:24px;
+  }
+  h1 .line{display:block;overflow:hidden}
+  h1 .line > span{display:inline-block;transform:translateY(110%);animation:rise 1s var(--ease) forwards}
+  h1 .line:nth-child(2) > span{animation-delay:.14s}
+  h1 .line:nth-child(3) > span{animation-delay:.28s}
+  @keyframes rise{to{transform:translateY(0)}}
+  h1 em{font-style:italic;color:var(--gold-2)}
+  .hero p.sub{font-size:1.13rem;color:rgba(247,243,235,.78);max-width:33rem;margin-bottom:32px}
+  .hero p.sub strong{color:#fff}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:30px}
+  .proof-chips{display:flex;gap:10px;flex-wrap:wrap}
+  .proof-chips .chip{
+    display:inline-flex;align-items:center;gap:8px;font-size:.86rem;font-weight:600;
+    color:var(--ivory);background:rgba(247,243,235,.07);border:1px solid var(--line-light);
+    padding:8px 15px;border-radius:999px;backdrop-filter:blur(6px);
+  }
+  .proof-chips .chip .stars{color:var(--gold);letter-spacing:1px;font-size:.8rem}
+  .proof-chips .chip b{color:var(--gold-2)}
+
+  /* Glass booking card */
+  .glass-card{
+    position:relative;border-radius:var(--r-lg);padding:28px;
+    background:linear-gradient(155deg,rgba(247,243,235,.13),rgba(247,243,235,.05));
+    border:1px solid rgba(247,243,235,.22);
+    backdrop-filter:blur(16px) saturate(1.4);-webkit-backdrop-filter:blur(16px) saturate(1.4);
+    box-shadow:var(--shadow-lg);
+  }
+  .glass-card::before{
+    content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+    background:linear-gradient(120deg,rgba(255,255,255,.14),transparent 40%);
+  }
+  .glass-card h3{font-family:var(--serif);font-weight:600;font-size:1.3rem;margin-bottom:4px}
+  .glass-card > p{font-size:.9rem;color:rgba(247,243,235,.72);margin-bottom:18px}
+  .slot{
+    display:flex;justify-content:space-between;align-items:center;gap:10px;
+    padding:12px 15px;border:1px solid var(--line-light);border-radius:var(--r-sm);
+    margin-bottom:10px;font-size:.92rem;background:rgba(5,29,25,.28);
+    transition:border-color .3s,transform .3s var(--ease);
+  }
+  .slot:hover{border-color:rgba(198,161,91,.6);transform:translateX(4px)}
+  .slot b{font-family:var(--serif);font-weight:600}
+  .slot .tag{font-size:.68rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background:rgba(198,161,91,.18);color:var(--gold-2)}
+  .slot .tag.hot{background:var(--gold);color:var(--pine-950)}
+  .glass-card .btn{width:100%;justify-content:center;margin-top:8px}
+  .card-note{font-size:.76rem;color:rgba(247,243,235,.55);margin-top:12px;text-align:center}
+
+  /* ══════════════ MARQUEE ══════════════ */
+  .marquee{
+    position:relative;background:var(--pine-900);border-top:1px solid var(--line-light);
+    overflow:hidden;padding:15px 0;
+  }
+  .marquee-track{display:flex;gap:0;width:max-content;animation:scrollX 30s linear infinite}
+  .marquee:hover .marquee-track{animation-play-state:paused}
+  .marquee-track span{
+    font-family:var(--serif);font-style:italic;font-size:1.02rem;color:rgba(247,243,235,.75);
+    padding:0 26px;white-space:nowrap;display:flex;align-items:center;gap:52px;
+  }
+  .marquee-track span::after{content:"✦";font-style:normal;color:var(--gold);font-size:.8rem}
+  @keyframes scrollX{to{transform:translateX(-50%)}}
+
+  /* ══════════════ REVEAL ══════════════ */
+  .reveal{opacity:0;transform:translateY(34px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+  .reveal.in{opacity:1;transform:translateY(0)}
+  .reveal-d1{transition-delay:.1s}.reveal-d2{transition-delay:.2s}.reveal-d3{transition-delay:.3s}
+
+  /* ══════════════ SECTIONS ══════════════ */
+  section.block{padding:96px 0;position:relative}
+  section.dark{background:var(--pine-950);color:var(--ivory)}
+  section.tint{background:linear-gradient(180deg,#F1EADB,var(--porcelain))}
+  .sec-head{max-width:680px;margin-bottom:52px}
+  .sec-head.center{margin-left:auto;margin-right:auto;text-align:center}
+  .kicker{
+    display:inline-block;font-size:.74rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--teal);margin-bottom:14px;
+  }
+  .dark .kicker{color:var(--gold-2)}
+  h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.9rem,3.6vw,2.7rem);line-height:1.12;letter-spacing:-.01em;margin-bottom:14px}
+  h2 em{font-style:italic;color:var(--teal)}
+  .dark h2 em{color:var(--gold-2)}
+  .sec-head p{color:var(--muted);font-size:1.03rem}
+  .dark .sec-head p{color:rgba(247,243,235,.7)}
+  .sample-note{
+    display:flex;gap:10px;align-items:flex-start;max-width:760px;
+    font-size:.87rem;color:#7A5A14;background:#FBF3DC;border:1px dashed var(--gold);
+    border-radius:var(--r-sm);padding:12px 17px;margin-bottom:36px;
+  }
+  .center + .sample-note,.sec-head.center ~ .sample-note{margin-left:auto;margin-right:auto}
+  .sample-note b{color:#5F450D;white-space:nowrap}
+
+  /* ══════════════ COUNTERS ══════════════ */
+  .proof-band{background:var(--pine-900);color:var(--ivory);border-top:1px solid var(--line-light)}
+  .proof-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:52px 0}
+  .proof-cell{text-align:center;padding:8px 6px}
+  .proof-cell + .proof-cell{border-left:1px solid var(--line-light)}
+  .proof-num{
+    font-family:var(--serif);font-size:clamp(2.4rem,4.5vw,3.4rem);font-weight:600;line-height:1;
+    color:#fff;font-variant-numeric:tabular-nums;
+  }
+  .proof-num .unit{color:var(--gold-2);font-size:.55em;vertical-align:.35em;margin-left:2px}
+  .proof-lbl{margin-top:10px;font-size:.86rem;color:rgba(247,243,235,.68);font-weight:600}
+  .proof-lbl b{display:block;color:var(--gold-2);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;margin-bottom:3px}
+
+  /* ══════════════ LEAK / OLD WAY vs 6D WAY ══════════════ */
+  .leak-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:stretch}
+  .leak-card{border-radius:var(--r-lg);padding:34px;position:relative;overflow:hidden}
+  .leak-old{background:#fff;border:1px solid var(--line);box-shadow:0 10px 26px -14px rgba(5,29,25,.18)}
+  .leak-new{
+    background:linear-gradient(150deg,var(--pine-800),var(--pine-950));color:var(--ivory);
+    box-shadow:var(--shadow-md);
+  }
+  .leak-new::before{content:"";position:absolute;width:340px;height:340px;top:-160px;right:-120px;border-radius:50%;background:radial-gradient(circle,rgba(198,161,91,.35),transparent 65%)}
+  .leak-card h3{font-family:var(--serif);font-weight:600;font-size:1.35rem;margin-bottom:6px;display:flex;align-items:center;gap:10px}
+  .leak-card .sub{font-size:.9rem;margin-bottom:22px}
+  .leak-old .sub{color:var(--muted)} .leak-new .sub{color:rgba(247,243,235,.66)}
+  .leak-steps{list-style:none;position:relative}
+  .leak-steps li{display:flex;gap:14px;padding:11px 0;font-size:.95rem;position:relative}
+  .leak-steps li + li{border-top:1px dashed var(--line)}
+  .leak-new .leak-steps li + li{border-top-color:rgba(247,243,235,.14)}
+  .leak-steps .ic{
+    flex:none;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-size:.8rem;font-weight:800;
+  }
+  .leak-old .ic{background:#F6E3E0;color:#B3402E}
+  .leak-new .ic{background:rgba(198,161,91,.2);color:var(--gold-2)}
+  .leak-steps li span{color:var(--muted)}
+  .leak-new .leak-steps li span{color:rgba(247,243,235,.72)}
+  .leak-steps li b{display:block;color:var(--ink)}
+  .leak-new .leak-steps li b{color:#fff}
+  .leak-verdict{
+    margin-top:22px;padding:15px 18px;border-radius:var(--r-sm);font-size:.93rem;font-weight:600;
+  }
+  .leak-old .leak-verdict{background:#FBEEEA;color:#8C3524}
+  .leak-new .leak-verdict{background:rgba(198,161,91,.14);color:var(--gold-2);position:relative}
+
+  /* ══════════════ BENTO TREATMENTS ══════════════ */
+  .bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:1fr;gap:18px}
+  .tile{
+    position:relative;border-radius:var(--r-lg);overflow:hidden;padding:26px;
+    background:#fff;border:1px solid var(--line);display:flex;flex-direction:column;
+    transition:transform .45s var(--ease),box-shadow .45s var(--ease),border-color .45s;
+  }
+  .tile:hover{transform:translateY(-6px);box-shadow:var(--shadow-md);border-color:rgba(198,161,91,.55)}
+  .tile .art{
+    position:relative;height:120px;border-radius:var(--r-md);margin-bottom:20px;overflow:hidden;flex:none;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .tile .art svg{transition:transform .8s var(--ease)}
+  .tile:hover .art svg{transform:scale(1.14) rotate(-3deg)}
+  .art-1{background:linear-gradient(140deg,#155E50,#0A2E29)}
+  .art-2{background:linear-gradient(140deg,#C6A15B,#8F6E2F)}
+  .art-3{background:linear-gradient(140deg,#2E7D6B,#0E3B34)}
+  .art-4{background:linear-gradient(140deg,#7FA393,#46685A)}
+  .art-5{background:linear-gradient(140deg,#0E3B34,#1B7A68)}
+  .art-6{background:linear-gradient(140deg,#DCC084,#A8823F)}
+  .tile h3{font-family:var(--serif);font-weight:600;font-size:1.22rem;margin-bottom:7px}
+  .tile p{font-size:.92rem;color:var(--muted);flex:1}
+  .tile .foot{margin-top:18px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+  .price-chip{
+    font-size:.8rem;font-weight:700;color:#7A5A14;background:#FBF3DC;border:1px dashed var(--gold);
+    padding:5px 11px;border-radius:999px;white-space:nowrap;
+  }
+  .tile-link{
+    font-size:.87rem;font-weight:800;color:var(--teal);display:inline-flex;align-items:center;gap:6px;
+  }
+  .tile-link svg{transition:transform .3s var(--ease)}
+  .tile-link:hover svg{transform:translateX(4px)}
+  .tile-lg{grid-column:span 2}
+  .tile-lg .art{height:150px}
+  .tile-lg h3{font-size:1.5rem}
+  .tile-wide{grid-column:span 2}
+  .price-strip{
+    margin-top:22px;border-radius:var(--r-lg);padding:28px 30px;
+    background:linear-gradient(140deg,rgba(10,46,41,.04),rgba(198,161,91,.08));
+    border:1px solid var(--line);
+  }
+  .price-strip h3{font-family:var(--serif);font-weight:600;font-size:1.15rem;margin-bottom:14px}
+  .price-rows{display:grid;grid-template-columns:1fr 1fr;gap:4px 54px}
+  .price-row{display:flex;align-items:baseline;gap:10px;padding:8px 0;border-bottom:1px solid var(--line);font-size:.93rem}
+  .price-row .dots{flex:1;border-bottom:2px dotted rgba(20,33,28,.25);transform:translateY(-4px)}
+  .price-row .nm{font-weight:600}
+  .price-row .nm small{display:block;font-weight:500;color:var(--muted);font-size:.78rem}
+  .price-row .pr{font-weight:800;color:var(--pine-800);white-space:nowrap}
+
+  /* ══════════════ PROCESS ══════════════ */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;counter-reset:step}
+  .step{
+    position:relative;border-radius:var(--r-lg);padding:32px 28px;
+    background:linear-gradient(160deg,rgba(247,243,235,.09),rgba(247,243,235,.03));
+    border:1px solid var(--line-light);backdrop-filter:blur(8px);
+    transition:transform .45s var(--ease),border-color .45s;
+  }
+  .step:hover{transform:translateY(-5px);border-color:rgba(198,161,91,.55)}
+  .step .big-num{
+    font-family:var(--serif);font-size:3.6rem;font-weight:600;line-height:1;
+    color:transparent;-webkit-text-stroke:1.5px rgba(198,161,91,.75);margin-bottom:18px;
+  }
+  .step h3{font-family:var(--serif);font-weight:600;font-size:1.25rem;margin-bottom:8px}
+  .step p{font-size:.93rem;color:rgba(247,243,235,.7)}
+
+  /* ══════════════ CAROUSEL ══════════════ */
+  .carousel{position:relative;max-width:820px;margin:0 auto}
+  .carousel-viewport{overflow:hidden;border-radius:var(--r-lg)}
+  .carousel-track{display:flex;transition:transform .65s var(--ease)}
+  .slide{
+    flex:0 0 100%;padding:44px 46px;text-align:center;
+    background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);
+  }
+  .slide .stars{color:#E9A13B;letter-spacing:4px;font-size:1.15rem;margin-bottom:18px}
+  .slide blockquote{
+    font-family:var(--serif);font-size:clamp(1.15rem,2.4vw,1.45rem);line-height:1.45;font-weight:500;
+    color:var(--pine-900);margin-bottom:22px;
+  }
+  .slide .who{display:flex;align-items:center;justify-content:center;gap:12px}
+  .slide .avatar{
+    width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--pine-700),var(--teal));
+    color:#fff;font-family:var(--serif);font-weight:700;display:flex;align-items:center;justify-content:center;
+  }
+  .slide .who b{display:block;font-size:.93rem;text-align:left}
+  .slide .who span{display:block;font-size:.8rem;color:var(--muted);text-align:left}
+  .placeholder-badge{
+    display:inline-block;font-size:.68rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+    color:#7A5A14;background:#FBF3DC;border:1px dashed var(--gold);border-radius:999px;padding:4px 11px;margin-bottom:16px;
+  }
+  .carousel-controls{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:24px}
+  .car-btn{
+    width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:#fff;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;color:var(--pine-800);
+    transition:background .3s,color .3s,transform .3s var(--ease);
+  }
+  .car-btn:hover{background:var(--pine-900);color:var(--ivory);transform:scale(1.07)}
+  .car-dots{display:flex;gap:8px}
+  .car-dot{
+    width:9px;height:9px;border-radius:50%;border:none;background:rgba(20,33,28,.22);cursor:pointer;padding:0;
+    transition:background .3s,transform .3s;
+  }
+  .car-dot.active{background:var(--gold);transform:scale(1.35)}
+
+  /* ══════════════ FAQ ══════════════ */
+  .faq{max-width:820px;margin:0 auto}
+  details.faq-item{
+    background:#fff;border:1px solid var(--line);border-radius:var(--r-md);margin-bottom:12px;overflow:hidden;
+    transition:border-color .3s,box-shadow .3s;
+  }
+  details.faq-item[open]{border-color:rgba(198,161,91,.6);box-shadow:var(--shadow-md)}
+  details.faq-item summary{
+    cursor:pointer;list-style:none;padding:20px 24px;font-weight:700;font-size:1rem;
+    display:flex;justify-content:space-between;align-items:center;gap:14px;
+  }
+  details.faq-item summary::-webkit-details-marker{display:none}
+  details.faq-item summary .plus{
+    flex:none;width:30px;height:30px;border-radius:50%;background:var(--ivory);color:var(--pine-800);
+    display:flex;align-items:center;justify-content:center;font-size:1.05rem;font-weight:800;
+    transition:transform .35s var(--ease),background .3s;
+  }
+  details.faq-item[open ] summary .plus{transform:rotate(45deg);background:var(--gold);color:var(--pine-950)}
+  details.faq-item .faq-body{padding:0 24px 22px;color:var(--muted);font-size:.95rem}
+
+  /* ══════════════ VISIT / CTA ══════════════ */
+  .visit-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:22px}
+  .visit-card{
+    border-radius:var(--r-lg);padding:32px;background:#fff;border:1px solid var(--line);
+    transition:transform .45s var(--ease),box-shadow .45s var(--ease);
+  }
+  .visit-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+  .visit-card h3{font-family:var(--serif);font-weight:600;font-size:1.3rem;margin-bottom:18px}
+  .vrow{display:flex;gap:13px;margin-bottom:16px;font-size:.96rem}
+  .vrow svg{flex:none;margin-top:3px}
+  .vrow b{color:var(--pine-900)}
+  .vrow a{font-weight:800;color:var(--teal)}
+  .vrow a:hover{text-decoration:underline}
+  .hours-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px dashed var(--line);font-size:.95rem}
+  .hours-row:last-of-type{border-bottom:none}
+  .hours-note{margin-top:14px;font-size:.84rem;color:var(--muted)}
+  .cta-band{
+    margin-top:26px;border-radius:var(--r-lg);position:relative;overflow:hidden;text-align:center;
+    background:linear-gradient(130deg,var(--pine-800),var(--pine-950) 70%);color:var(--ivory);
+    padding:56px 34px;box-shadow:var(--shadow-lg);
+  }
+  .cta-band::before{content:"";position:absolute;width:480px;height:480px;top:-260px;left:50%;transform:translateX(-50%);border-radius:50%;background:radial-gradient(circle,rgba(198,161,91,.35),transparent 65%)}
+  .cta-band h3{position:relative;font-family:var(--serif);font-weight:500;font-size:clamp(1.7rem,3.4vw,2.4rem);margin-bottom:12px}
+  .cta-band h3 em{font-style:italic;color:var(--gold-2)}
+  .cta-band p{position:relative;color:rgba(247,243,235,.75);max-width:30rem;margin:0 auto 26px}
+  .cta-band .btn{position:relative}
+
+  /* ══════════════ FOOTER ══════════════ */
+  footer{background:var(--pine-950);color:rgba(247,243,235,.72);padding:56px 0 110px}
+  .foot-grid{display:flex;justify-content:space-between;gap:36px;flex-wrap:wrap;margin-bottom:30px}
+  footer .logo{margin-bottom:14px}
+  footer h4{color:#fff;font-size:.92rem;letter-spacing:.06em;text-transform:uppercase;margin-bottom:12px}
+  footer ul{list-style:none;font-size:.92rem}
+  footer ul li{margin-bottom:7px}
+  footer ul a:hover{color:var(--gold-2)}
+  .fineprint{border-top:1px solid rgba(247,243,235,.12);padding-top:20px;font-size:.78rem;color:rgba(247,243,235,.45);text-align:center}
+  .fineprint p + p{margin-top:6px}
+
+  /* ══════════════ STICKY MOBILE CTA ══════════════ */
+  .sticky-cta{
+    position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:90;
+    display:none;align-items:center;gap:12px;
+    background:rgba(6,32,27,.88);border:1px solid rgba(198,161,91,.4);border-radius:18px;
+    padding:11px 12px 11px 17px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    box-shadow:0 18px 40px rgba(0,0,0,.4);color:var(--ivory);
+    transform:translateY(140%);transition:transform .55s var(--ease);
+  }
+  .sticky-cta.show{transform:translateY(0)}
+  .sticky-cta .sc-txt{flex:1;line-height:1.3}
+  .sticky-cta .sc-txt b{display:block;font-size:.9rem}
+  .sticky-cta .sc-txt span{font-size:.76rem;color:rgba(247,243,235,.65)}
+  .sticky-cta .sc-txt .stars{color:var(--gold);font-size:.72rem;letter-spacing:1px}
+  .sticky-cta .btn{padding:12px 19px;font-size:.88rem}
+
+  /* ══════════════ RESPONSIVE ══════════════ */
+  @media (max-width:1020px){
+    .bento{grid-template-columns:repeat(2,1fr)}
+    .tile-lg,.tile-wide{grid-column:span 2}
+    .proof-grid{grid-template-columns:repeat(2,1fr);gap:28px 12px}
+    .proof-cell + .proof-cell{border-left:none}
+  }
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr;padding-bottom:64px}
+    .hero{padding-top:128px}
+    nav.main-nav{display:none}
+    .leak-grid,.visit-grid{grid-template-columns:1fr}
+    .steps{grid-template-columns:1fr}
+    .price-rows{grid-template-columns:1fr}
+    section.block{padding:70px 0}
+    .slide{padding:34px 24px}
+    footer{padding-bottom:120px}
+  }
+  @media (max-width:640px){
+    .sticky-cta{display:flex}
+    .bento{grid-template-columns:1fr}
+    .tile-lg,.tile-wide{grid-column:span 1}
+    .header-in .btn{display:none}
+    .hero-ctas .btn{flex:1;justify-content:center}
+    .logo b{font-size:1.08rem}
+  }
+
+  /* ══════════════ REDUCED MOTION ══════════════ */
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{
+      animation-duration:.01ms !important;animation-iteration-count:1 !important;
+      transition-duration:.01ms !important;
+    }
+    h1 .line > span{transform:none}
+    .reveal{opacity:1;transform:none}
+    .marquee-track{animation:none;flex-wrap:wrap;width:auto}
+    .sticky-cta{transform:none}
+  }
+</style>
+<noscript><style>.reveal{opacity:1 !important;transform:none !important}.sticky-cta{transform:none !important}</style></noscript>
+</head>
+<body>
+<!-- ══════════════ HEADER ══════════════ -->
+<header id="siteHeader">
+  <div class="wrap header-in">
+    <a class="logo" href="#top" aria-label="6D Aesthetic Clinic — home">
+      <span class="mark" aria-hidden="true">6D</span>
+      <span><b>6D Aesthetic Clinic</b><small>F-7 Markaz · Islamabad</small></span>
+    </a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="#treatments">Treatments</a>
+      <a href="#experience">The 6D Standard</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#visit">Visit Us</a>
+    </nav>
+    <a class="btn btn-wa" href="https://wa.me/923245495755?text=Assalam%20o%20Alaikum%2C%20I%27d%20like%20to%20book%20a%20consultation%20at%206D%20Aesthetic%20Clinic." target="_blank" rel="noopener">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.83 9.83 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.23 8.23Zm4.52-6.16c-.25-.13-1.47-.72-1.69-.8-.23-.09-.39-.13-.56.12-.16.25-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.13-1.05-.39-2-1.23-.73-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.35-.77-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.13.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.6.19 1.13.16 1.56.1.48-.07 1.47-.58 1.74-1.14.27-.56.27-1.04.19-1.14-.08-.1-.23-.16-.48-.28Z"/></svg>
+      Book a consultation
+    </a>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ══════════════ HERO ══════════════ -->
+<section class="hero" aria-label="Introduction">
+  <div class="hero-bg" aria-hidden="true">
+    <div class="hero-grid-bg"></div>
+    <div class="glow glow-a" data-plx="0.12"></div>
+    <div class="glow glow-b" data-plx="-0.08"></div>
+    <div class="glow glow-c" data-plx="0.05"></div>
+    <svg class="hero-rings" data-plx="0.06" viewBox="0 0 600 600" fill="none" aria-hidden="true">
+      <circle cx="300" cy="300" r="120" stroke="#C6A15B" stroke-width="1" opacity=".55"/>
+      <circle cx="300" cy="300" r="190" stroke="#C6A15B" stroke-width="1" opacity=".35"/>
+      <circle cx="300" cy="300" r="262" stroke="#C6A15B" stroke-width="1" opacity=".2"/>
+      <circle cx="300" cy="300" r="52" stroke="#E6CD8F" stroke-width="1" opacity=".7"/>
+      <path d="M300 38a262 262 0 0 1 227 131" stroke="#E6CD8F" stroke-width="2" opacity=".8"/>
+    </svg>
+  </div>
+
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow"><span class="dot" aria-hidden="true"></span>Aesthetic Clinic · Pakland Plaza, F-7 Markaz</span>
+      <h1>
+        <span class="line"><span>The glow is real.</span></span>
+        <span class="line"><span>Booking it should</span></span>
+        <span class="line"><span>be <em>effortless.</em></span></span>
+      </h1>
+      <p class="sub">Doctor-led skin, laser and aesthetic care at <strong>6D Aesthetic Clinic</strong> — the F-7 clinic patients already rate <strong>4.8 stars on Google</strong>. Now the booking is as polished as the care: one tap, and your consultation is confirmed on WhatsApp.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-wa" href="https://wa.me/923245495755?text=Assalam%20o%20Alaikum%2C%20I%27d%20like%20to%20book%20a%20consultation%20at%206D%20Aesthetic%20Clinic." target="_blank" rel="noopener">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.83 9.83 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.23 8.23Zm4.52-6.16c-.25-.13-1.47-.72-1.69-.8-.23-.09-.39-.13-.56.12-.16.25-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.13-1.05-.39-2-1.23-.73-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.35-.77-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.13.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.6.19 1.13.16 1.56.1.48-.07 1.47-.58 1.74-1.14.27-.56.27-1.04.19-1.14-.08-.1-.23-.16-.48-.28Z"/></svg>
+          Book on WhatsApp
+        </a>
+        <a class="btn btn-ghost-l" href="#treatments">Explore treatments</a>
+      </div>
+      <div class="proof-chips" aria-label="Verified patient rating">
+        <span class="chip"><span class="stars" aria-hidden="true">★★★★★</span><b>4.8</b>&nbsp;on Google</span>
+        <span class="chip"><b>60</b>&nbsp;patient reviews</span>
+        <span class="chip">Led by&nbsp;<b>Dr. Saria Sheikh</b></span>
+      </div>
+    </div>
+
+    <div class="glass-card reveal">
+      <h3>Book a consultation</h3>
+      <p>Choose a moment that suits you — confirm on WhatsApp and the slot is yours.</p>
+      <div class="slot"><span>Today · 4:00 PM</span><b>Consultation</b><span class="tag hot">Popular</span></div>
+      <div class="slot"><span>Today · 6:30 PM</span><b>Consultation</b><span class="tag">Open</span></div>
+      <div class="slot"><span>Tomorrow · 12:00 PM</span><b>Consultation</b><span class="tag">Open</span></div>
+      <div class="slot"><span>Tomorrow · 5:00 PM</span><b>Treatment slot</b><span class="tag">Open</span></div>
+      <a class="btn btn-wa" href="https://wa.me/923245495755?text=Assalam%20o%20Alaikum%2C%20I%27d%20like%20to%20book%20a%20consultation%20at%206D%20Aesthetic%20Clinic." target="_blank" rel="noopener">Confirm on WhatsApp</a>
+      <p class="card-note">Sample times shown for layout — live slots are confirmed on WhatsApp.</p>
+    </div>
+  </div>
+
+  <!-- Marquee -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Laser Hair Removal</span><span>Signature HydraFacial</span><span>PRP Hair &amp; Skin</span><span>Chemical Peels</span><span>Microneedling</span><span>Skin Consultation</span>
+      <span>Laser Hair Removal</span><span>Signature HydraFacial</span><span>PRP Hair &amp; Skin</span><span>Chemical Peels</span><span>Microneedling</span><span>Skin Consultation</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ VERIFIED PROOF COUNTERS ══════════════ -->
+<div class="proof-band" aria-label="Verified Google rating">
+  <div class="wrap proof-grid">
+    <div class="proof-cell reveal">
+      <div class="proof-num"><span class="count" data-count="4.8" data-decimals="1">0.0</span><span class="unit">★</span></div>
+      <div class="proof-lbl"><b>Verified</b>Average patient rating on Google</div>
+    </div>
+    <div class="proof-cell reveal reveal-d1">
+      <div class="proof-num"><span class="count" data-count="60">0</span><span class="unit">+</span></div>
+      <div class="proof-lbl"><b>Verified</b>Patient reviews on Google</div>
+    </div>
+    <div class="proof-cell reveal reveal-d2">
+      <div class="proof-num">F-7</div>
+      <div class="proof-lbl"><b>Pakland Plaza</b>Markaz, Islamabad</div>
+    </div>
+    <div class="proof-cell reveal reveal-d3">
+      <div class="proof-num">1 tap</div>
+      <div class="proof-lbl"><b>WhatsApp booking</b>Consultation confirmed in chat</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ THE LEAK → THE STANDARD ══════════════ -->
+<section class="block" id="experience">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker">Why patients book the clinic that answers first</span>
+      <h2>Found on Google. Loved in the reviews. <em>Lost at the click.</em></h2>
+      <p>Every week, patients search for a laser or facial in F-7, find 6D&rsquo;s 4.8 stars — and then hit a wall. There was nothing to click. This page is what changes that.</p>
+    </div>
+    <div class="leak-grid">
+      <article class="leak-card leak-old reveal">
+        <h3>The old way</h3>
+        <p class="sub">How a ready-to-book patient used to slip away:</p>
+        <ul class="leak-steps">
+          <li><span class="ic" aria-hidden="true">✕</span><div><b>Search &ldquo;best facial F-7&rdquo;</b><span>6D appears — with a rating, but no website behind it.</span></div></li>
+          <li><span class="ic" aria-hidden="true">✕</span><div><b>Hunt for prices</b><span>No price guide anywhere, so the patient keeps scrolling.</span></div></li>
+          <li><span class="ic" aria-hidden="true">✕</span><div><b>Try to book</b><span>No booking path — just a phone number buried in a listing.</span></div></li>
+          <li><span class="ic" aria-hidden="true">✕</span><div><b>Book a competitor instead</b><span>The clinic whose website answered first gets the appointment.</span></div></li>
+        </ul>
+        <p class="leak-verdict">The reviews did the hard work. The missing website gave the booking away.</p>
+      </article>
+      <article class="leak-card leak-new reveal reveal-d1">
+        <h3>The 6D standard</h3>
+        <p class="sub">The same patient, on this website:</p>
+        <ul class="leak-steps">
+          <li><span class="ic" aria-hidden="true">✓</span><div><b>Lands on a flagship page</b><span>4.8 stars and 60 reviews up front — the trust is instant.</span></div></li>
+          <li><span class="ic" aria-hidden="true">✓</span><div><b>Sees treatments &amp; guide prices</b><span>Clear, elegant, no surprises — the decision gets easy.</span></div></li>
+          <li><span class="ic" aria-hidden="true">✓</span><div><b>Taps once to book</b><span>WhatsApp opens with the message ready. Slot confirmed in chat.</span></div></li>
+          <li><span class="ic" aria-hidden="true">✓</span><div><b>Arrives as a patient</b><span>Consultation first, then a plan built around her skin.</span></div></li>
+        </ul>
+        <p class="leak-verdict">Same clinic. Same reviews. Now every search ends in a booking.</p>
+      </article>
+    </div>
+  </div>
+</section>
+<!-- ══════════════ TREATMENTS — BENTO ══════════════ -->
+<section class="block tint" id="treatments">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="kicker">Treatments &amp; guide prices</span>
+      <h2>Every treatment, <em>beautifully</em> within reach</h2>
+      <p>The treatments patients ask about most — explained simply, priced openly, and bookable from every single card.</p>
+    </div>
+    <p class="sample-note reveal"><b>Sample layout:</b><span>Treatments, descriptions and prices on this page are placeholders demonstrating the design. The live site carries 6D Aesthetic Clinic&rsquo;s real treatment list and confirmed prices.</span></p>
+
+    <div class="bento">
+      <article class="tile tile-lg reveal">
+        <div class="art art-1" aria-hidden="true">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#E6CD8F" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4.5 13.5H11L9.5 22 19 10h-6.5L13 2Z"/></svg>
+        </div>
+        <h3>Laser Hair Removal</h3>
+        <p>An end to the waxing cycle — smooth skin, area by area, with courses planned around your skin after consultation. The treatment F-7 asks us about most.</p>
+        <div class="foot">
+          <span class="price-chip">From PKR 4,500 · sample price</span>
+          <a class="tile-link" href="https://wa.me/923245495755?text=Assalam%20o%20Alaikum%2C%20I%27d%20like%20to%20ask%20about%20Laser%20Hair%20Removal%20at%206D%20Aesthetic%20Clinic." target="_blank" rel="noopener">Ask on WhatsApp <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </article>
+
+      <article class="tile reveal reveal-d1">
+        <div class="art art-2" aria-hidden="true">
+          <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#FFF6E0" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c1.8 2.7 5 4.4 5 8a5 5 0 0 1-10 0c0-3.6 3.2-5.3 5-8Z"/><path d="M9.5 21h5"/></svg>
+        </div>
+        <h3>Signature HydraFacial</h3>
+        <p>Deep-cleanse, gentle exfoliation and intense hydration in one sitting — the pre-event glow, or a monthly reset.</p>
+        <div class="foot">
+          <span class="price-chip">PKR 8,500 · sample price</span>
+          <a class="tile-link" href="https://wa.me/923245495755?text=Assalam%20o%20Alaikum%2C%20I%27d%20like%20to%20ask%20about%20the%20Signature%20HydraFacial%20at%206D%20Aesthetic%20Clinic." target="_blank" rel="noopener">Ask on WhatsApp <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </article>
+
+      <article class="tile reveal reveal-d2">
+        <div class="art art-3" aria-hidden="true">
+          <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#E6CD8F" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3.5 2"/></svg>
+        </div>
+        <h3>PRP for Hair &amp; Skin</h3>
+        <p>Your own platelet-rich plasma, used to support hair strength and skin renewal — always planned as a course, never sold on impulse.</p>
+        <div class="foot">
+          <span class="price-chip">From PKR 12,000 · sample price</span>
+          <a class="tile-link" href="https://wa.me/923245495755?text=Assalam%20o%20Alaikum%2C%20I%27d%20like%20to%20ask%20about%20PRP%20at%206D%20Aesthetic%20Clinic." target="_blank" rel="noopener">Ask on WhatsApp <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </article>
+
+      <article class="tile reveal">
+        <div class="art art-4" aria-hidden="true">
+          <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#F7F3EB" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/><circle cx="12" cy="12" r="3.2"/></svg>
+        </div>
+        <h3>Chemical Peels</h3>
+        <p>Measured exfoliation for dullness, uneven tone and tired texture — strength matched to your skin at consultation.</p>
+        <div class="foot">
+          <span class="price-chip">PKR 7,000 · sample price</span>
+          <a class="tile-link" href="https://wa.me/923245495755?text=Assalam%20o%20Alaikum%2C%20I%27d%20like%20to%20ask%20about%20Chemical%20Peels%20at%206D%20Aesthetic%20Clinic." target="_blank" rel="noopener">Ask on WhatsApp <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </article>
+
+      <article class="tile reveal reveal-d1">
+        <div class="art art-5" aria-hidden="true">
+          <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#E6CD8F" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20C4 12 12 4 20 4c0 8-8 16-16 16Z"/><path d="M4 20C7 15 11 11 16 8"/></svg>
+        </div>
+        <h3>Microneedling</h3>
+        <p>Fine, controlled stimulation that supports smoother texture over a planned series of sessions.</p>
+        <div class="foot">
+          <span class="price-chip">PKR 11,000 · sample price</span>
+          <a class="tile-link" href="https://wa.me/923245495755?text=Assalam%20o%20Alaikum%2C%20I%27d%20like%20to%20ask%20about%20Microneedling%20at%206D%20Aesthetic%20Clinic." target="_blank" rel="noopener">Ask on WhatsApp <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </article>
+
+      <article class="tile tile-wide reveal reveal-d2">
+        <div class="art art-6" aria-hidden="true">
+          <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#3D2E08" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"/></svg>
+        </div>
+        <h3>Start with a Skin Consultation</h3>
+        <p>Not sure what your skin needs? That is exactly where 6D starts. A proper look at your skin with Dr. Saria Sheikh&rsquo;s clinic, honest advice first — and if a treatment isn&rsquo;t right for you, you will hear that first. No pressure, no package-selling.</p>
+        <div class="foot">
+          <span class="price-chip">PKR 2,000 · sample price</span>
+          <a class="tile-link" href="https://wa.me/923245495755?text=Assalam%20o%20Alaikum%2C%20I%27d%20like%20to%20book%20a%20skin%20consultation%20at%206D%20Aesthetic%20Clinic." target="_blank" rel="noopener">Book a consultation <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </article>
+    </div>
+
+    <div class="price-strip reveal">
+      <h3>Guide prices at a glance <span style="font-family:var(--sans);font-size:.78rem;font-weight:700;color:#7A5A14">(all sample prices — confirmed on WhatsApp)</span></h3>
+      <div class="price-rows">
+        <div class="price-row"><span class="nm">Signature HydraFacial<small>Sample item</small></span><span class="dots"></span><span class="pr">8,500</span></div>
+        <div class="price-row"><span class="nm">Laser Hair Removal — Small Area<small>Sample item</small></span><span class="dots"></span><span class="pr">4,500</span></div>
+        <div class="price-row"><span class="nm">Chemical Peel<small>Sample item</small></span><span class="dots"></span><span class="pr">7,000</span></div>
+        <div class="price-row"><span class="nm">Laser Hair Removal — Full Face<small>Sample item</small></span><span class="dots"></span><span class="pr">7,500</span></div>
+        <div class="price-row"><span class="nm">PRP — Hair<small>Sample item</small></span><span class="dots"></span><span class="pr">12,000</span></div>
+        <div class="price-row"><span class="nm">Microneedling<small>Sample item</small></span><span class="dots"></span><span class="pr">11,000</span></div>
+        <div class="price-row"><span class="nm">Carbon Laser Facial<small>Sample item</small></span><span class="dots"></span><span class="pr">10,000</span></div>
+        <div class="price-row"><span class="nm">Skin Consultation<small>Sample item</small></span><span class="dots"></span><span class="pr">2,000</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ PROCESS ══════════════ -->
+<section class="block dark" aria-label="How booking works">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker">Effortless, end to end</span>
+      <h2>Three steps between you and <em>the chair</em></h2>
+      <p>No forms. No hold music. No hunting for a number.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="big-num" aria-hidden="true">01</div>
+        <h3>Tap &amp; message</h3>
+        <p>Any button on this page opens WhatsApp with your message already written. Tell us the treatment — or just that your skin needs help.</p>
+      </div>
+      <div class="step reveal reveal-d1">
+        <div class="big-num" aria-hidden="true">02</div>
+        <h3>Consult first</h3>
+        <p>Your visit starts with a proper consultation. Honest advice before any treatment — if something isn&rsquo;t right for your skin, you hear it first.</p>
+      </div>
+      <div class="step reveal reveal-d2">
+        <div class="big-num" aria-hidden="true">03</div>
+        <h3>Your plan, your pace</h3>
+        <p>A personalised plan built around your skin and your budget — follow-ups, questions and rebooking all stay on the same WhatsApp thread.</p>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:40px" class="reveal">
+      <a class="btn btn-gold" href="https://wa.me/923245495755?text=Assalam%20o%20Alaikum%2C%20I%27d%20like%20to%20book%20a%20consultation%20at%206D%20Aesthetic%20Clinic." target="_blank" rel="noopener">Start with step one — book now</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ REVIEWS CAROUSEL ══════════════ -->
+<section class="block" id="reviews">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="kicker">Patient reviews</span>
+      <h2>Rated <em>4.8 stars</em> by the people who matter</h2>
+      <p>That rating is real — it lives on 6D Aesthetic Clinic&rsquo;s Google profile today, across 60 patient reviews.</p>
+    </div>
+    <p class="sample-note reveal"><b>Sample layout:</b><span>The quotes in the carousel are placeholders written only to demonstrate the design. At launch, this carousel carries the clinic&rsquo;s actual Google reviews, word for word.</span></p>
+
+    <div class="carousel reveal" aria-roledescription="carousel" aria-label="Sample patient reviews">
+      <div class="carousel-viewport">
+        <div class="carousel-track" id="carTrack">
+          <div class="slide" role="group" aria-roledescription="slide" aria-label="Sample review 1 of 3">
+            <span class="placeholder-badge">Sample placeholder review</span>
+            <div class="stars" aria-hidden="true">★★★★★</div>
+            <blockquote>&ldquo;A real patient quote about a facial or skin treatment at 6D would appear here — pulled word for word from the clinic&rsquo;s Google reviews.&rdquo;</blockquote>
+            <div class="who"><span class="avatar" aria-hidden="true">S</span><div><b>Sample review</b><span>Placeholder — replaced at launch</span></div></div>
+          </div>
+          <div class="slide" role="group" aria-roledescription="slide" aria-label="Sample review 2 of 3">
+            <span class="placeholder-badge">Sample placeholder review</span>
+            <div class="stars" aria-hidden="true">★★★★★</div>
+            <blockquote>&ldquo;A real patient quote about laser sessions and honest, pressure-free advice would appear here.&rdquo;</blockquote>
+            <div class="who"><span class="avatar" aria-hidden="true">S</span><div><b>Sample review</b><span>Placeholder — replaced at launch</span></div></div>
+          </div>
+          <div class="slide" role="group" aria-roledescription="slide" aria-label="Sample review 3 of 3">
+            <span class="placeholder-badge">Sample placeholder review</span>
+            <div class="stars" aria-hidden="true">★★★★★</div>
+            <blockquote>&ldquo;A real patient quote about one-tap WhatsApp booking and the F-7 location would appear here.&rdquo;</blockquote>
+            <div class="who"><span class="avatar" aria-hidden="true">S</span><div><b>Sample review</b><span>Placeholder — replaced at launch</span></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-controls">
+        <button class="car-btn" id="carPrev" type="button" aria-label="Previous review">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+        </button>
+        <div class="car-dots" id="carDots" role="tablist" aria-label="Choose review"></div>
+        <button class="car-btn" id="carNext" type="button" aria-label="Next review">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ FAQ ══════════════ -->
+<section class="block tint" aria-label="Frequently asked questions">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="kicker">Before you book</span>
+      <h2>Questions, <em>answered honestly</em></h2>
+    </div>
+    <div class="faq">
+      <details class="faq-item reveal">
+        <summary>Do I need a consultation before treatment?<span class="plus" aria-hidden="true">+</span></summary>
+        <div class="faq-body">Yes — at 6D, the consultation comes first. Your skin is assessed before any plan is suggested, and if a treatment isn&rsquo;t right for you, you will hear that first. It is the reason patients rate the clinic 4.8 stars.</div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>How do I book?<span class="plus" aria-hidden="true">+</span></summary>
+        <div class="faq-body">Tap any WhatsApp button on this page or message <b>0324 5495755</b> directly. Your consultation is confirmed in the chat — no forms, no accounts, no waiting on hold.</div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>Are the prices on this page final?<span class="plus" aria-hidden="true">+</span></summary>
+        <div class="faq-body">Prices shown here are guide prices to demonstrate this sample website. Your confirmed price is always agreed on WhatsApp or at consultation before treatment begins — no surprises at the till.</div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>Where exactly is the clinic?<span class="plus" aria-hidden="true">+</span></summary>
+        <div class="faq-body">Pakland Plaza, F-7 Markaz, Islamabad — in the middle of F-7, minutes from anywhere in the sector. Message us on WhatsApp and we will happily drop a location pin.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ VISIT + FINAL CTA ══════════════ -->
+<section class="block" id="visit">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker">Visit us</span>
+      <h2>In the heart of <em>F-7 Markaz</em></h2>
+      <p>Walk-ins are welcome — but a WhatsApp message ahead guarantees your slot.</p>
+    </div>
+    <div class="visit-grid">
+      <div class="visit-card reveal">
+        <h3>Find 6D Aesthetic Clinic</h3>
+        <div class="vrow">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#14544A" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>
+          <span><b>6D Aesthetic Clinic</b><br>Pakland Plaza, F-7 Markaz,<br>Islamabad, Pakistan</span>
+        </div>
+        <div class="vrow">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#14544A" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg>
+          <span><b>Phone / WhatsApp:</b> <a href="https://wa.me/923245495755" target="_blank" rel="noopener">0324 5495755</a></span>
+        </div>
+        <div class="vrow">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#14544A" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c1.8 2.7 5 4.4 5 8a5 5 0 0 1-10 0c0-3.6 3.2-5.3 5-8Z"/></svg>
+          <span>Led by <b>Dr. Saria Sheikh</b> — consultation before every treatment plan.</span>
+        </div>
+        <div class="vrow">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#14544A" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16M4 12h16M4 19h10"/></svg>
+          <span>Skin · Laser · Facials · PRP · Advanced aesthetic care <span style="color:var(--muted)">(sample treatment list)</span></span>
+        </div>
+      </div>
+      <div class="visit-card reveal reveal-d1">
+        <h3>Opening hours</h3>
+        <div class="hours-row"><span>Monday – Saturday</span><b>11:00 AM – 9:00 PM</b></div>
+        <div class="hours-row"><span>Sunday</span><b>By appointment</b></div>
+        <div class="hours-row"><span>Consultations</span><b>By WhatsApp, any day</b></div>
+        <div class="hours-row"><span>Walk-ins</span><b>Welcome, subject to slots</b></div>
+        <p class="hours-note">Sample hours shown for layout — replaced with the clinic&rsquo;s actual timings at launch. Evening slots fill quickly, so booking a day ahead on WhatsApp is the surest way to get your time.</p>
+      </div>
+    </div>
+
+    <div class="cta-band reveal">
+      <h3>Your consultation is <em>one tap</em> away.</h3>
+      <p>The clinic your neighbours already rate 4.8 stars — now with a booking experience to match.</p>
+      <a class="btn btn-wa" href="https://wa.me/923245495755?text=Assalam%20o%20Alaikum%2C%20I%27d%20like%20to%20book%20a%20consultation%20at%206D%20Aesthetic%20Clinic." target="_blank" rel="noopener">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.83 9.83 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.23 8.23Zm4.52-6.16c-.25-.13-1.47-.72-1.69-.8-.23-.09-.39-.13-.56.12-.16.25-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.13-1.05-.39-2-1.23-.73-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.35-.77-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.13.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.6.19 1.13.16 1.56.1.48-.07 1.47-.58 1.74-1.14.27-.56.27-1.04.19-1.14-.08-.1-.23-.16-.48-.28Z"/></svg>
+        Book on WhatsApp — 0324 5495755
+      </a>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div style="max-width:300px">
+        <div class="logo">
+          <span class="mark" aria-hidden="true">6D</span>
+          <span><b>6D Aesthetic Clinic</b><small>F-7 Markaz · Islamabad</small></span>
+        </div>
+        <p style="font-size:.9rem">Doctor-led skin, laser and aesthetic care in F-7 Markaz — honest consultations, personalised plans, and a verified 4.8-star patient rating on Google.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#treatments">Treatments &amp; prices</a></li>
+          <li><a href="#experience">The 6D Standard</a></li>
+          <li><a href="#reviews">Patient reviews</a></li>
+          <li><a href="#visit">Visit us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Treatments</h4>
+        <ul>
+          <li><a href="#treatments">Laser Hair Removal</a></li>
+          <li><a href="#treatments">Signature HydraFacial</a></li>
+          <li><a href="#treatments">PRP Hair &amp; Skin</a></li>
+          <li><a href="#treatments">Skin Consultation</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li>Pakland Plaza, F-7 Markaz</li>
+          <li>Islamabad, Pakistan</li>
+          <li><a href="https://wa.me/923245495755" target="_blank" rel="noopener">0324 5495755 (WhatsApp)</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fineprint">
+      <p>Demo website — speculative portfolio sample prepared free by RozContent for 6D Aesthetic Clinic; this is not the clinic&rsquo;s live website.</p>
+      <p>Verified: 4.8-star rating and 60 reviews from the clinic&rsquo;s public Google profile. Treatments, prices, hours, appointment slots and review quotes shown are sample placeholders for layout demonstration, to be replaced with the clinic&rsquo;s confirmed details at launch. © 2026 6D Aesthetic Clinic, F-7 Markaz, Islamabad.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════════ STICKY MOBILE WHATSAPP CTA ══════════════ -->
+<div class="sticky-cta" id="stickyCta">
+  <div class="sc-txt">
+    <span class="stars" aria-hidden="true">★★★★★</span> <b>4.8 · 60 reviews</b>
+    <span>Book your consultation now</span>
+  </div>
+  <a class="btn btn-wa" href="https://wa.me/923245495755?text=Assalam%20o%20Alaikum%2C%20I%27d%20like%20to%20book%20a%20consultation%20at%206D%20Aesthetic%20Clinic." target="_blank" rel="noopener">Book on WhatsApp</a>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ── Header state ── */
+  var header = document.getElementById("siteHeader");
+  var sticky = document.getElementById("stickyCta");
+  function onScrollHeader(){
+    if (window.scrollY > 30) header.classList.add("scrolled"); else header.classList.remove("scrolled");
+    if (window.scrollY > 480) sticky.classList.add("show"); else sticky.classList.remove("show");
+  }
+  window.addEventListener("scroll", onScrollHeader, {passive:true});
+  onScrollHeader();
+
+  /* ── Scroll reveals ── */
+  var revealEls = document.querySelectorAll(".reveal");
+  if (reduced || !("IntersectionObserver" in window)) {
+    revealEls.forEach(function(el){ el.classList.add("in"); });
+  } else {
+    var revealObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) { e.target.classList.add("in"); revealObs.unobserve(e.target); }
+      });
+    }, {threshold:.14, rootMargin:"0px 0px -6% 0px"});
+    revealEls.forEach(function(el){ revealObs.observe(el); });
+  }
+
+  /* ── Animated counters (verified figures only) ── */
+  function animateCount(el){
+    var target = parseFloat(el.getAttribute("data-count"));
+    var decimals = parseInt(el.getAttribute("data-decimals") || "0", 10);
+    if (reduced) { el.textContent = target.toFixed(decimals); return; }
+    var dur = 1500, start = null;
+    function frame(ts){
+      if (!start) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = (target * eased).toFixed(decimals);
+      if (p < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+  var counters = document.querySelectorAll(".count");
+  if ("IntersectionObserver" in window) {
+    var countObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) { animateCount(e.target); countObs.unobserve(e.target); }
+      });
+    }, {threshold:.5});
+    counters.forEach(function(el){ countObs.observe(el); });
+  } else {
+    counters.forEach(animateCount);
+  }
+
+  /* ── Subtle hero parallax ── */
+  var plxEls = document.querySelectorAll("[data-plx]");
+  if (!reduced && plxEls.length) {
+    var ticking = false;
+    function plx(){
+      var y = window.scrollY;
+      plxEls.forEach(function(el){
+        var speed = parseFloat(el.getAttribute("data-plx"));
+        el.style.transform = "translate3d(0," + (y * speed).toFixed(1) + "px,0)";
+      });
+      ticking = false;
+    }
+    window.addEventListener("scroll", function(){
+      if (!ticking && window.scrollY < window.innerHeight * 1.2) { requestAnimationFrame(plx); ticking = true; }
+    }, {passive:true});
+  }
+
+  /* ── Testimonial carousel ── */
+  var track = document.getElementById("carTrack");
+  var slides = track.children.length;
+  var dotsWrap = document.getElementById("carDots");
+  var idx = 0, timer = null;
+  for (var i = 0; i < slides; i++) {
+    var d = document.createElement("button");
+    d.type = "button";
+    d.className = "car-dot" + (i === 0 ? " active" : "");
+    d.setAttribute("aria-label", "Go to review " + (i + 1));
+    (function(n){ d.addEventListener("click", function(){ goTo(n); restart(); }); })(i);
+    dotsWrap.appendChild(d);
+  }
+  var dots = dotsWrap.children;
+  function goTo(n){
+    idx = (n + slides) % slides;
+    track.style.transform = "translateX(-" + (idx * 100) + "%)";
+    for (var j = 0; j < slides; j++) dots[j].classList.toggle("active", j === idx);
+  }
+  function next(){ goTo(idx + 1); }
+  function restart(){
+    if (timer) clearInterval(timer);
+    if (!reduced) timer = setInterval(next, 5500);
+  }
+  document.getElementById("carPrev").addEventListener("click", function(){ goTo(idx - 1); restart(); });
+  document.getElementById("carNext").addEventListener("click", function(){ next(); restart(); });
+  var carousel = document.querySelector(".carousel");
+  carousel.addEventListener("mouseenter", function(){ if (timer) clearInterval(timer); });
+  carousel.addEventListener("mouseleave", restart);
+  carousel.addEventListener("focusin", function(){ if (timer) clearInterval(timer); });
+  carousel.addEventListener("focusout", restart);
+  /* Touch swipe */
+  var startX = null;
+  track.addEventListener("touchstart", function(e){ startX = e.touches[0].clientX; }, {passive:true});
+  track.addEventListener("touchend", function(e){
+    if (startX === null) return;
+    var dx = e.changedTouches[0].clientX - startX;
+    if (Math.abs(dx) > 42) { if (dx < 0) next(); else goTo(idx - 1); restart(); }
+    startX = null;
+  }, {passive:true});
+  restart();
+})();
+</script>
+</body>
+</html>
