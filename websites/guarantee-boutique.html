@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<!--
+════════════════════════════════════════════════════════════════════════════════
+  GUARANTEE BOUTIQUE — CATALOGUE SAMPLE · RESEARCH-TO-CONCEPT BRIEF
+  Prepared by RozContent under the Elite Agency Creative Standard (2026-10-12)
+════════════════════════════════════════════════════════════════════════════════
+  AUDIENCE
+    Women in Pakistan who discover the boutique on TikTok (@guarantee.boutique)
+    and are used to ordering through chat; the owner herself is the second
+    audience — she must see her manual chat workload disappear.
+
+  THREE PAIN POINTS (from the prospect's public presence)
+    1. No shop anywhere: every order is a manual WhatsApp chat — "price?",
+       "size?", "available?" — one customer at a time, answered by hand.
+    2. Posts draw thousands of likes, but that attention has nowhere to land:
+       a viewer who loves a piece at midnight must start a chat from zero,
+       so most of the intent evaporates before an order is placed.
+    3. The back-catalogue is invisible: once a TikTok post scrolls away, the
+       pieces in it effectively stop selling, even though the boutique still
+       holds them.
+
+  CREATIVE CONCEPT (one sentence)
+    "The Midnight Drop" — a dark, editorial, fashion-magazine catalogue that
+    treats every piece like a runway drop and turns one tap into a written
+    WhatsApp order, so the boutique sells while she sleeps.
+
+  PALETTE / TYPE / MOTION
+    Palette: deep plum-black ink, wine, hot rose, antique gold, warm ivory.
+    Type: high-contrast editorial serif display (Playfair/Didot/Georgia
+    stack) with kinetic oversized headlines + a scrolling marquee; clean
+    system sans for body and commerce details.
+    Motion: staggered kinetic hero type, CSS marquee, scroll-triggered
+    reveals (IntersectionObserver), subtle hero parallax, card hover lift /
+    art zoom / sheen, animated mechanism counters, auto-advancing
+    testimonial carousel. All motion honours prefers-reduced-motion and
+    the page is fully usable with JavaScript disabled.
+
+  CONVERSION PATH
+    Hero CTA → catalogue → every product card carries its OWN prefilled
+    WhatsApp order link (wa.me/923087874678, item-specific message) →
+    order confirmed in chat. Sticky mobile order bar + repeated CTA bands
+    keep the path one tap away at every scroll depth.
+
+  VERIFIED PROOF (from the boutique's own public presence)
+    Online-only in Pakistan; sells via TikTok @guarantee.boutique; WhatsApp
+    0308 7874678 is the owner's publicly stated ONLY official order channel;
+    posts draw thousands of likes; no website/shop exists.
+  PLACEHOLDERS (visibly labelled in the page)
+    All 8 products, photos/artwork, sizes and prices are SAMPLES. All
+    testimonials are SAMPLE layout placeholders — no real customer reviews,
+    sales figures or ratings are claimed anywhere on this page. Counters
+    describe the ordering mechanism (1 tap, 3 steps, 24/7, under a minute),
+    not business performance.
+════════════════════════════════════════════════════════════════════════════════
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guarantee Boutique — The Collection | Order in One Tap on WhatsApp</title>
+<meta name="description" content="Guarantee Boutique — women's clothing, online in Pakistan. Browse the editorial catalogue and order any piece in one tap on WhatsApp.">
+<script>document.documentElement.className += ' js';</script>
+<style>
+  :root{
+    --ink:#170812;
+    --plum:#2a0f22;
+    --wine:#57163a;
+    --rose:#e0457b;
+    --rose-soft:#ff7ba6;
+    --gold:#d9a441;
+    --gold-soft:#f0cd8a;
+    --ivory:#fff8f2;
+    --paper:#fbeee6;
+    --body-ink:#33182a;
+    --muted:#7d5a6d;
+    --muted-dark:#c9a7ba;
+    --line:rgba(87,22,58,.14);
+    --wa:#22b358;
+    --wa-dark:#128a43;
+    --serif:"Playfair Display",Didot,"Bodoni MT","Didot LT STD",Georgia,"Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    --ease:cubic-bezier(.22,.9,.28,1);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans);
+    color:var(--body-ink);
+    background:var(--paper);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{text-decoration:none;color:inherit}
+  img,svg{display:block}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+  ::selection{background:var(--rose);color:#fff}
+  :focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:6px}
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    padding:14px 26px;border-radius:999px;font-weight:700;font-size:.97rem;
+    transition:transform .25s var(--ease), box-shadow .25s var(--ease), background .25s var(--ease);
+    white-space:nowrap;position:relative;
+  }
+  .btn:active{transform:scale(.97)}
+  .btn-wa{background:var(--wa);color:#fff;box-shadow:0 12px 26px rgba(34,179,88,.32)}
+  .btn-wa:hover{background:var(--wa-dark);transform:translateY(-2px)}
+  .btn-rose{background:linear-gradient(120deg,var(--rose),#b0235c);color:#fff;box-shadow:0 12px 26px rgba(224,69,123,.35)}
+  .btn-rose:hover{transform:translateY(-2px)}
+  .btn-glass{
+    background:rgba(255,248,242,.1);color:var(--ivory);
+    border:1px solid rgba(255,248,242,.35);
+    backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  }
+  .btn-glass:hover{background:rgba(255,248,242,.2);transform:translateY(-2px)}
+  .btn-order{width:100%;padding:12px 18px;font-size:.93rem}
+
+  /* ---------- Header ---------- */
+  header{
+    position:fixed;inset:0 0 auto 0;z-index:60;
+    background:rgba(23,8,18,.55);
+    backdrop-filter:blur(14px) saturate(1.3);-webkit-backdrop-filter:blur(14px) saturate(1.3);
+    border-bottom:1px solid rgba(255,248,242,.12);
+    transition:background .35s var(--ease);
+  }
+  header.scrolled{background:rgba(23,8,18,.88)}
+  .header-in{display:flex;align-items:center;justify-content:space-between;padding:13px 0;gap:16px}
+  .logo{display:flex;align-items:center;gap:11px;color:var(--ivory);font-family:var(--serif);font-weight:700;font-size:1.28rem;letter-spacing:.01em}
+  .logo .mark{
+    width:40px;height:40px;border-radius:50%;flex:none;
+    background:conic-gradient(from 210deg,var(--gold),var(--rose),var(--wine),var(--gold));
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 6px 18px rgba(224,69,123,.4);
+  }
+  .logo small{display:block;font-family:var(--sans);font-weight:700;font-size:.62rem;color:var(--gold-soft);letter-spacing:.22em;text-transform:uppercase}
+  nav.main-nav{display:flex;gap:30px;font-size:.93rem;font-weight:600;color:rgba(255,248,242,.82)}
+  nav.main-nav a{position:relative;padding:4px 0}
+  nav.main-nav a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--gold);transition:width .3s var(--ease)}
+  nav.main-nav a:hover{color:#fff}
+  nav.main-nav a:hover::after{width:100%}
+  header .btn{padding:11px 20px;font-size:.9rem}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;color:var(--ivory);overflow:hidden;
+    background:
+      radial-gradient(900px 520px at 88% -10%, rgba(224,69,123,.38), transparent 62%),
+      radial-gradient(700px 480px at -12% 108%, rgba(217,164,65,.24), transparent 60%),
+      linear-gradient(160deg,#2a0f22 0%, var(--ink) 55%, #20060f 100%);
+    padding:158px 0 0;
+  }
+  .hero-art{position:absolute;inset:0;pointer-events:none}
+  .hero-art .ring{
+    position:absolute;border:1px solid rgba(240,205,138,.28);border-radius:50%;
+  }
+  .ring.r1{width:560px;height:560px;right:-140px;top:-160px}
+  .ring.r2{width:380px;height:380px;right:-40px;top:-70px;border-color:rgba(255,123,166,.3)}
+  .ring.r3{width:220px;height:220px;left:-70px;bottom:120px;border-color:rgba(255,248,242,.14)}
+  .hero-art .gown{
+    position:absolute;right:2%;bottom:0;width:min(430px,44vw);opacity:.95;
+    filter:drop-shadow(0 24px 44px rgba(0,0,0,.5));
+  }
+  .hero-art .spark{position:absolute;color:var(--gold-soft);opacity:.85}
+  .hero-grid{position:relative;display:grid;grid-template-columns:1.12fr .88fr;gap:52px;align-items:end;padding-bottom:74px}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:9px;
+    background:rgba(255,248,242,.09);border:1px solid rgba(255,248,242,.22);
+    backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+    font-size:.74rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+    padding:7px 15px;border-radius:999px;margin-bottom:24px;color:var(--gold-soft);
+  }
+  .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--rose-soft);box-shadow:0 0 0 0 rgba(255,123,166,.6);animation:pulse 2.4s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,123,166,.55)}70%{box-shadow:0 0 0 9px rgba(255,123,166,0)}100%{box-shadow:0 0 0 0 rgba(255,123,166,0)}}
+  h1{
+    font-family:var(--serif);font-weight:600;
+    font-size:clamp(2.9rem,6.4vw,4.9rem);line-height:1.02;letter-spacing:-.01em;
+    margin-bottom:22px;
+  }
+  h1 .w{display:inline-block}
+  .js h1 .w{opacity:0;transform:translateY(34px) rotate(1.2deg);animation:rise .9s var(--ease) forwards;animation-delay:calc(var(--i)*.09s + .1s)}
+  @keyframes rise{to{opacity:1;transform:none}}
+  h1 em{font-style:italic;background:linear-gradient(100deg,var(--gold-soft),var(--rose-soft));-webkit-background-clip:text;background-clip:text;color:transparent}
+  h1 .u{position:relative;white-space:nowrap}
+  h1 .u::after{
+    content:"";position:absolute;left:0;right:0;bottom:.06em;height:.09em;
+    background:linear-gradient(90deg,var(--rose),var(--gold));border-radius:99px;opacity:.85;
+  }
+  .hero p.sub{font-size:1.15rem;color:rgba(255,248,242,.82);max-width:33rem;margin-bottom:32px}
+  .hero p.sub strong{color:#fff}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:24px}
+  .hero-note{font-size:.92rem;color:var(--muted-dark)}
+  .hero-note strong{color:var(--gold-soft)}
+
+  /* Hero order card (glass) */
+  .order-card{
+    background:rgba(255,248,242,.08);
+    border:1px solid rgba(255,248,242,.2);
+    backdrop-filter:blur(16px) saturate(1.4);-webkit-backdrop-filter:blur(16px) saturate(1.4);
+    border-radius:24px;padding:28px;
+    box-shadow:0 30px 60px rgba(0,0,0,.42);
+  }
+  .order-card h2{font-family:var(--serif);font-size:1.35rem;font-weight:600;margin-bottom:6px}
+  .order-card>p{font-size:.9rem;color:rgba(255,248,242,.75);margin-bottom:18px}
+  .slot{
+    display:flex;justify-content:space-between;align-items:center;gap:12px;
+    padding:12px 15px;border:1px solid rgba(255,248,242,.16);border-radius:14px;
+    margin-bottom:10px;font-size:.92rem;background:rgba(23,8,18,.28);
+    transition:border-color .25s, transform .25s var(--ease);
+  }
+  .slot:hover{border-color:rgba(240,205,138,.55);transform:translateX(4px)}
+  .slot b{color:var(--gold-soft)}
+  .slot .tag{background:rgba(224,69,123,.25);color:#ffd7e5;font-size:.7rem;font-weight:800;letter-spacing:.06em;padding:3px 10px;border-radius:999px;white-space:nowrap;text-transform:uppercase}
+  .order-card .btn{width:100%;margin-top:8px}
+  .card-note{font-size:.78rem;color:var(--muted-dark);margin-top:12px;text-align:center}
+  .card-note strong{color:var(--ivory)}
+
+  /* Marquee */
+  .marquee{
+    position:relative;border-top:1px solid rgba(255,248,242,.14);
+    background:rgba(23,8,18,.5);overflow:hidden;padding:13px 0;
+  }
+  .marquee-track{display:flex;gap:0;width:max-content;animation:scrollX 30s linear infinite}
+  .marquee:hover .marquee-track{animation-play-state:paused}
+  .marquee-track span{
+    font-family:var(--serif);font-style:italic;font-size:1.02rem;color:rgba(255,248,242,.85);
+    padding:0 26px;white-space:nowrap;
+  }
+  .marquee-track span b{color:var(--gold-soft);font-style:normal}
+  @keyframes scrollX{to{transform:translateX(-50%)}}
+
+  /* ---------- Reveal ---------- */
+  .js .rv{opacity:0;transform:translateY(30px);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:calc(var(--d,0)*.09s)}
+  .js .rv.in{opacity:1;transform:none}
+
+  /* ---------- Sections ---------- */
+  section.block{padding:88px 0}
+  .sec-head{max-width:660px;margin:0 auto 46px;text-align:center}
+  .sec-eyebrow{font-size:.74rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--rose);margin-bottom:12px}
+  .sec-head h2{font-family:var(--serif);font-weight:600;font-size:clamp(1.9rem,3.6vw,2.6rem);line-height:1.12;letter-spacing:-.01em;margin-bottom:12px;color:var(--body-ink)}
+  .sec-head h2 em{font-style:italic;color:var(--wine)}
+  .sec-head p{color:var(--muted);font-size:1.02rem}
+  .on-dark .sec-head h2{color:var(--ivory)}
+  .on-dark .sec-head h2 em{color:var(--gold-soft)}
+  .on-dark .sec-head p{color:var(--muted-dark)}
+
+  /* ---------- Pain section ---------- */
+  .pain-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;max-width:1080px;margin:0 auto}
+  .pain-copy h2{font-family:var(--serif);font-weight:600;font-size:clamp(1.9rem,3.6vw,2.55rem);line-height:1.14;margin-bottom:18px}
+  .pain-copy h2 em{font-style:italic;color:var(--wine)}
+  .pain-copy p{color:var(--muted);font-size:1.03rem;margin-bottom:16px}
+  .pain-copy p strong{color:var(--body-ink)}
+  .pain-list{list-style:none;margin-top:22px}
+  .pain-list li{display:flex;gap:13px;margin-bottom:15px;font-size:.99rem}
+  .pain-list .x{
+    flex:none;width:26px;height:26px;border-radius:50%;margin-top:2px;
+    background:#fbe3ec;color:#b0235c;font-weight:800;font-size:.85rem;
+    display:flex;align-items:center;justify-content:center;
+  }
+  /* Chat mockup */
+  .phone{
+    max-width:360px;margin:0 auto;border-radius:38px;padding:12px;
+    background:linear-gradient(160deg,#3a1230,#170812);
+    box-shadow:0 34px 70px rgba(42,15,34,.4);
+    transform:rotate(2deg);
+  }
+  .phone-screen{background:#efe7de;border-radius:28px;overflow:hidden}
+  .phone-head{background:#075e54;color:#fff;padding:13px 16px;display:flex;align-items:center;gap:11px}
+  .phone-head .avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--rose),var(--gold));display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:700;color:#fff;flex:none}
+  .phone-head b{font-size:.92rem;display:block;line-height:1.25}
+  .phone-head span{font-size:.72rem;opacity:.85}
+  .chat{padding:16px 14px 18px;display:flex;flex-direction:column;gap:8px;min-height:308px}
+  .msg{
+    max-width:82%;padding:8px 12px;border-radius:12px;font-size:.86rem;line-height:1.45;
+    background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.12);align-self:flex-start;border-top-left-radius:3px;
+  }
+  .msg small{display:block;text-align:right;font-size:.64rem;color:#8a8a8a;margin-top:2px}
+  .msg.buyer{background:#dcf8c6;align-self:flex-end;border-top-left-radius:12px;border-top-right-radius:3px}
+  .msg.faded{opacity:.45}
+  .chat-note{
+    align-self:center;background:#fdf3c6;color:#6d5c12;font-size:.72rem;font-weight:600;
+    padding:5px 12px;border-radius:999px;margin:4px 0;
+  }
+
+  /* ---------- Stats band ---------- */
+  .stats{
+    background:
+      radial-gradient(700px 300px at 12% -40%, rgba(224,69,123,.3), transparent 60%),
+      linear-gradient(120deg,var(--plum),var(--ink));
+    color:var(--ivory);
+  }
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center;padding:56px 0}
+  .stat .num{font-family:var(--serif);font-size:clamp(2.4rem,4.6vw,3.4rem);font-weight:600;line-height:1;color:#fff}
+  .stat .num .sfx{color:var(--gold-soft);font-size:.55em;font-style:italic}
+  .stat .lbl{margin-top:9px;font-size:.88rem;color:var(--muted-dark);font-weight:600;max-width:13rem;margin-left:auto;margin-right:auto}
+  .stats .fineprint-line{text-align:center;font-size:.76rem;color:rgba(201,167,186,.75);padding:0 0 30px}
+
+  /* ---------- Catalogue (bento / editorial grid) ---------- */
+  .sample-note{
+    max-width:760px;margin:-22px auto 42px;text-align:center;font-size:.88rem;color:#7c5b10;
+    background:#fdf3da;border:1px dashed var(--gold);border-radius:14px;padding:11px 18px;
+  }
+  .products{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:22px;grid-auto-flow:dense;
+  }
+  .product{
+    background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden;
+    display:flex;flex-direction:column;position:relative;
+    transition:transform .35s var(--ease), box-shadow .35s var(--ease);
+  }
+  .product:hover{transform:translateY(-6px);box-shadow:0 26px 48px rgba(87,22,58,.2)}
+  .product.feature{grid-column:span 2}
+  .p-art{
+    position:relative;height:228px;overflow:hidden;flex:none;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .product.feature .p-art{height:264px}
+  .product.tall .p-art{height:300px}
+  .p-art::before{ /* dotted pattern overlay */
+    content:"";position:absolute;inset:0;
+    background-image:radial-gradient(rgba(255,255,255,.22) 1.2px, transparent 1.3px);
+    background-size:16px 16px;opacity:.5;
+  }
+  .p-art::after{ /* sheen sweep on hover */
+    content:"";position:absolute;top:0;bottom:0;left:-70%;width:45%;
+    background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);
+    transform:skewX(-18deg);transition:left .7s var(--ease);
+  }
+  .product:hover .p-art::after{left:125%}
+  .p-art svg{
+    position:relative;z-index:1;height:78%;width:auto;
+    filter:drop-shadow(0 14px 20px rgba(0,0,0,.28));
+    transition:transform .5s var(--ease);
+  }
+  .product:hover .p-art svg{transform:scale(1.07) rotate(-1.2deg)}
+  .p-art .badge{
+    position:absolute;top:13px;left:13px;z-index:2;
+    background:rgba(255,248,242,.94);color:var(--wine);
+    font-size:.66rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;
+    padding:4px 11px;border-radius:999px;
+  }
+  .p-art .drop-tag{
+    position:absolute;bottom:13px;right:13px;z-index:2;
+    font-family:var(--serif);font-style:italic;font-size:.85rem;color:rgba(255,255,255,.92);
+    text-shadow:0 1px 8px rgba(0,0,0,.35);
+  }
+  .g1{background:linear-gradient(155deg,#e58bab,#a63a63)}
+  .g2{background:linear-gradient(155deg,#9a63b8,#552a76)}
+  .g3{background:linear-gradient(155deg,#eab54e,#b57a17)}
+  .g4{background:linear-gradient(155deg,#5b93ad,#2c4f6b)}
+  .g5{background:linear-gradient(155deg,#6cb494,#2f6359)}
+  .g6{background:linear-gradient(155deg,#e07f57,#9c3a1c)}
+  .g7{background:linear-gradient(155deg,#d95d8d,#7c2348)}
+  .g8{background:linear-gradient(155deg,#8284b4,#3e4066)}
+  .product .body{padding:20px 20px 22px;display:flex;flex-direction:column;flex:1}
+  .product h3{font-family:var(--serif);font-size:1.14rem;font-weight:600;line-height:1.25;margin-bottom:6px}
+  .product p{font-size:.88rem;color:var(--muted);margin-bottom:12px;flex:1}
+  .product .sizes{font-size:.79rem;font-weight:700;color:var(--wine);letter-spacing:.03em;margin-bottom:9px}
+  .product .price{font-weight:800;color:var(--body-ink);font-size:1.06rem;margin-bottom:14px}
+  .product .price small{font-weight:600;color:var(--muted);font-size:.78rem}
+
+  /* ---------- Steps ---------- */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:1040px;margin:0 auto}
+  .step{
+    background:#fff;border:1px solid var(--line);border-radius:22px;padding:32px 26px;text-align:center;
+    transition:transform .3s var(--ease), box-shadow .3s var(--ease);
+  }
+  .step:hover{transform:translateY(-5px);box-shadow:0 20px 38px rgba(87,22,58,.14)}
+  .step .n{
+    width:54px;height:54px;border-radius:50%;margin:0 auto 17px;
+    background:conic-gradient(from 200deg,var(--gold),var(--rose),var(--wine),var(--gold));
+    color:#fff;display:flex;align-items:center;justify-content:center;
+    font-family:var(--serif);font-weight:700;font-size:1.3rem;
+    box-shadow:0 10px 22px rgba(224,69,123,.35);
+  }
+  .step h3{font-size:1.08rem;margin-bottom:8px}
+  .step p{font-size:.93rem;color:var(--muted)}
+
+  /* ---------- Testimonials ---------- */
+  .voices{
+    background:
+      radial-gradient(640px 340px at 90% -30%, rgba(217,164,65,.26), transparent 60%),
+      linear-gradient(150deg,var(--wine),var(--plum) 70%);
+    color:var(--ivory);
+  }
+  .carousel{max-width:760px;margin:0 auto;position:relative}
+  .carousel-viewport{overflow:hidden;border-radius:26px}
+  .carousel-track{display:flex;transition:transform .65s var(--ease)}
+  .t-slide{
+    flex:0 0 100%;padding:42px 44px;text-align:center;
+    background:rgba(255,248,242,.07);border:1px solid rgba(255,248,242,.16);
+    backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  }
+  .t-slide .stars{color:var(--gold-soft);font-size:1.05rem;letter-spacing:.35em;margin-bottom:16px}
+  .t-slide blockquote{font-family:var(--serif);font-style:italic;font-size:clamp(1.15rem,2.4vw,1.45rem);line-height:1.45;margin-bottom:18px}
+  .t-slide .who{font-size:.88rem;color:var(--muted-dark);font-weight:600}
+  .t-slide .who b{color:var(--ivory)}
+  .sample-tag{
+    display:inline-block;font-size:.68rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+    background:rgba(217,164,65,.22);color:var(--gold-soft);border:1px dashed rgba(240,205,138,.6);
+    padding:4px 12px;border-radius:999px;margin-bottom:18px;
+  }
+  .carousel-nav{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:24px}
+  .c-btn{
+    width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,248,242,.35);
+    background:rgba(255,248,242,.08);color:var(--ivory);cursor:pointer;font-size:1.05rem;
+    display:flex;align-items:center;justify-content:center;
+    transition:background .25s, transform .25s var(--ease);
+  }
+  .c-btn:hover{background:rgba(255,248,242,.22);transform:scale(1.08)}
+  .dots{display:flex;gap:9px}
+  .dot{width:9px;height:9px;border-radius:50%;border:none;background:rgba(255,248,242,.3);cursor:pointer;padding:0;transition:all .3s}
+  .dot.active{background:var(--gold-soft);width:26px;border-radius:99px}
+  .voices .fineprint-line{text-align:center;font-size:.78rem;color:rgba(201,167,186,.85);margin-top:26px}
+
+  /* ---------- Owner pitch (bento) ---------- */
+  .bento{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:1080px;margin:0 auto}
+  .b-card{
+    background:#fff;border:1px solid var(--line);border-radius:22px;padding:28px 25px;
+    transition:transform .3s var(--ease), box-shadow .3s var(--ease);
+  }
+  .b-card:hover{transform:translateY(-5px);box-shadow:0 20px 38px rgba(87,22,58,.14)}
+  .b-card.wide{grid-column:span 2}
+  .b-card.dark{
+    background:linear-gradient(140deg,var(--wine),var(--plum));color:var(--ivory);border:none;
+  }
+  .b-card.dark p{color:rgba(255,248,242,.8)}
+  .b-card .ic{
+    width:48px;height:48px;border-radius:15px;margin-bottom:16px;
+    background:var(--paper);display:flex;align-items:center;justify-content:center;
+  }
+  .b-card.dark .ic{background:rgba(255,248,242,.12)}
+  .b-card h3{font-size:1.06rem;margin-bottom:7px}
+  .b-card p{font-size:.92rem;color:var(--muted)}
+  .b-card .big{
+    font-family:var(--serif);font-size:clamp(1.5rem,2.6vw,1.9rem);line-height:1.2;font-weight:600;margin-bottom:8px;
+  }
+
+  /* ---------- FAQ ---------- */
+  .faq{max-width:780px;margin:0 auto}
+  .faq details{
+    background:#fff;border:1px solid var(--line);border-radius:16px;margin-bottom:12px;
+    overflow:hidden;transition:box-shadow .25s;
+  }
+  .faq details[open]{box-shadow:0 14px 30px rgba(87,22,58,.1)}
+  .faq summary{
+    cursor:pointer;padding:19px 22px;font-weight:700;font-size:.99rem;list-style:none;
+    display:flex;justify-content:space-between;align-items:center;gap:14px;
+  }
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"+";font-family:var(--serif);font-size:1.5rem;color:var(--rose);line-height:1;transition:transform .3s var(--ease)}
+  .faq details[open] summary::after{transform:rotate(45deg)}
+  .faq .a{padding:0 22px 20px;font-size:.93rem;color:var(--muted)}
+
+  /* ---------- Final CTA ---------- */
+  .cta-band{
+    max-width:960px;margin:0 auto;border-radius:28px;color:#fff;text-align:center;
+    padding:52px 36px;position:relative;overflow:hidden;
+    background:
+      radial-gradient(560px 260px at 85% -20%, rgba(240,205,138,.35), transparent 60%),
+      linear-gradient(120deg,var(--wine),var(--plum) 60%,#3d0f2a);
+    box-shadow:0 30px 60px rgba(42,15,34,.35);
+  }
+  .cta-band h2{font-family:var(--serif);font-weight:600;font-size:clamp(1.8rem,3.6vw,2.5rem);line-height:1.15;margin-bottom:12px}
+  .cta-band h2 em{font-style:italic;color:var(--gold-soft)}
+  .cta-band p{opacity:.88;margin-bottom:26px;max-width:34rem;margin-left:auto;margin-right:auto}
+  .cta-band .btn-wa{background:#fff;color:var(--wa-dark);box-shadow:0 14px 30px rgba(0,0,0,.25)}
+  .cta-band .btn-wa:hover{background:#eafaf0}
+
+  /* ---------- Footer ---------- */
+  footer{background:#12040d;color:#d8bcc9;padding:52px 0 34px}
+  .foot-grid{display:flex;justify-content:space-between;gap:34px;flex-wrap:wrap;margin-bottom:28px}
+  footer .logo{color:#fff}
+  footer h4{color:#fff;font-size:.95rem;margin-bottom:11px}
+  footer ul{list-style:none;font-size:.9rem}
+  footer ul li{margin-bottom:7px}
+  footer ul a{transition:color .2s}
+  footer ul a:hover{color:#fff}
+  .fineprint{border-top:1px solid rgba(255,255,255,.13);padding-top:19px;font-size:.78rem;color:#a9889b;text-align:center}
+  .fineprint p + p{margin-top:6px}
+
+  /* ---------- Sticky mobile order bar ---------- */
+  .sticky-bar{
+    position:fixed;left:12px;right:12px;bottom:12px;z-index:55;
+    display:none;gap:10px;padding:10px;border-radius:20px;
+    background:rgba(23,8,18,.82);
+    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    border:1px solid rgba(255,248,242,.18);
+    box-shadow:0 18px 40px rgba(0,0,0,.4);
+    transform:translateY(130%);transition:transform .45s var(--ease);
+  }
+  .sticky-bar.show{transform:none}
+  .sticky-bar .btn{flex:1;padding:13px 10px;font-size:.9rem}
+  .sticky-bar .btn-browse{background:rgba(255,248,242,.12);color:var(--ivory);border:1px solid rgba(255,248,242,.3)}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:1020px){
+    .products{grid-template-columns:1fr 1fr}
+    .product.feature{grid-column:span 2}
+    .bento{grid-template-columns:1fr 1fr}
+    .stats-grid{grid-template-columns:1fr 1fr;gap:34px 16px}
+  }
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr;gap:40px;padding-bottom:60px}
+    .hero-art .gown{opacity:.32;width:min(340px,70vw)}
+    .pain-grid{grid-template-columns:1fr;gap:44px}
+    .steps{grid-template-columns:1fr}
+    nav.main-nav{display:none}
+    section.block{padding:66px 0}
+  }
+  @media (max-width:760px){
+    .sticky-bar{display:flex}
+    body{padding-bottom:0}
+    footer{padding-bottom:104px}
+  }
+  @media (max-width:560px){
+    .products{grid-template-columns:1fr}
+    .product.feature{grid-column:span 1}
+    .product.feature .p-art,.product.tall .p-art{height:250px}
+    .bento{grid-template-columns:1fr}
+    .b-card.wide{grid-column:span 1}
+    .hero{padding-top:126px}
+    .header-in .btn{display:none}
+    .t-slide{padding:34px 24px}
+    .cta-band{padding:42px 24px}
+    .marquee-track span{font-size:.92rem;padding:0 18px}
+  }
+
+  /* ---------- Reduced motion ---------- */
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{
+      animation-duration:.01ms !important;
+      animation-iteration-count:1 !important;
+      transition-duration:.01ms !important;
+    }
+    .marquee-track{animation:none;flex-wrap:wrap;width:auto}
+    .js h1 .w{opacity:1;transform:none}
+    .js .rv{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header id="siteHeader">
+  <div class="wrap header-in">
+    <a class="logo" href="#top" aria-label="Guarantee Boutique — home">
+      <span class="mark" aria-hidden="true">
+        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a2.5 2.5 0 0 1 2.5 2.5c0 1.9-2.5 2.1-2.5 4"/><path d="M12 9.5 3.6 15a2.4 2.4 0 0 0 1.1 4.3h14.6A2.4 2.4 0 0 0 20.4 15L12 9.5Z"/></svg>
+      </span>
+      <span>Guarantee Boutique<small>The Midnight Drop · Online</small></span>
+    </a>
+    <nav class="main-nav" aria-label="Main">
+      <a href="#shop">The Collection</a>
+      <a href="#how">How to Order</a>
+      <a href="#voices">Love Notes</a>
+      <a href="#owner">For the Boutique</a>
+    </nav>
+    <a class="btn btn-wa" href="https://wa.me/923087874678" target="_blank" rel="noopener">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.83 9.83 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.23 8.23Zm4.52-6.16c-.25-.13-1.47-.72-1.69-.8-.23-.09-.39-.13-.56.12-.16.25-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.13-1.05-.39-2-1.23-.73-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.35-.77-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.13.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.6.19 1.13.16 1.56.1.48-.07 1.47-.58 1.74-1.14.27-.56.27-1.04.19-1.14-.08-.1-.23-.16-.48-.28Z"/></svg>
+      Order on WhatsApp
+    </a>
+  </div>
+</header>
+
+<main>
+<!-- ================= HERO ================= -->
+<section class="hero" id="top">
+  <div class="hero-art" aria-hidden="true">
+    <span class="ring r1"></span><span class="ring r2"></span><span class="ring r3"></span>
+    <svg class="spark" style="left:6%;top:120px" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.4 9.6L24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4z"/></svg>
+    <svg class="spark" style="left:44%;top:86px" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.4 9.6L24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4z"/></svg>
+    <svg class="gown" data-parallax="0.35" viewBox="0 0 300 420" fill="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="gownGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#ff7ba6"/><stop offset=".55" stop-color="#e0457b"/><stop offset="1" stop-color="#7c2348"/>
+        </linearGradient>
+      </defs>
+      <path d="M150 18c16 0 27 11 27 26 0 20-14 26-24 38-8 10-9 22-4 40l52 128c16 40 34 84 44 152H55c10-68 28-112 44-152l52-128c5-18 4-30-4-40-10-12-24-18-24-38 0-15 11-26 27-26Z" fill="url(#gownGrad)" opacity=".92"/>
+      <path d="M96 128c18 10 36 15 54 15s36-5 54-15" stroke="#f0cd8a" stroke-width="3" stroke-linecap="round" opacity=".8"/>
+      <path d="M84 210c22 9 44 13 66 13s44-4 66-13" stroke="#f0cd8a" stroke-width="2.4" stroke-linecap="round" opacity=".55"/>
+      <path d="M72 300c26 8 52 12 78 12s52-4 78-12" stroke="#f0cd8a" stroke-width="2" stroke-linecap="round" opacity=".35"/>
+      <circle cx="118" cy="180" r="3.4" fill="#f0cd8a" opacity=".8"/><circle cx="182" cy="180" r="3.4" fill="#f0cd8a" opacity=".8"/>
+      <circle cx="104" cy="258" r="3" fill="#f0cd8a" opacity=".65"/><circle cx="196" cy="258" r="3" fill="#f0cd8a" opacity=".65"/>
+      <circle cx="92" cy="344" r="2.6" fill="#f0cd8a" opacity=".5"/><circle cx="208" cy="344" r="2.6" fill="#f0cd8a" opacity=".5"/>
+    </svg>
+  </div>
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow"><span class="dot"></span> Women&rsquo;s clothing · Online boutique · Pakistan</span>
+      <h1 aria-label="Loved it on TikTok? Own it in one tap.">
+        <span class="w" style="--i:0">Loved</span> <span class="w" style="--i:1">it</span> <span class="w" style="--i:2">on</span> <span class="w" style="--i:3"><em>TikTok?</em></span><br>
+        <span class="w" style="--i:4">Own</span> <span class="w" style="--i:5">it</span> <span class="w" style="--i:6">in</span> <span class="w" style="--i:7"><span class="u">one&nbsp;tap.</span></span>
+      </h1>
+      <p class="sub">The full Guarantee Boutique collection, laid out like the drop it deserves to be — <strong>real prices, real sizes, zero chat-tag.</strong> Tap a piece and your order opens in WhatsApp already written. You just press send.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-rose" href="#shop">Shop the drop</a>
+        <a class="btn btn-glass" href="#how">How ordering works</a>
+      </div>
+      <p class="hero-note">Straight from <strong>@guarantee.boutique</strong> on TikTok — this is the shop those posts were missing.</p>
+    </div>
+    <div class="order-card" data-parallax="0.12">
+      <h2>Ordered in under a minute</h2>
+      <p>No accounts. No checkout forms. No &ldquo;price please?&rdquo; — ordering stays on the WhatsApp you already use.</p>
+      <div class="slot"><span><b>1.</b>&nbsp; Fall for a piece below</span><span class="tag">Browse</span></div>
+      <div class="slot"><span><b>2.</b>&nbsp; Tap &ldquo;Order on WhatsApp&rdquo;</span><span class="tag">1 tap</span></div>
+      <div class="slot"><span><b>3.</b>&nbsp; Confirm size &amp; delivery in chat</span><span class="tag">Done</span></div>
+      <a class="btn btn-wa" href="https://wa.me/923087874678?text=Assalam%20o%20Alaikum!%20I%20am%20browsing%20the%20Guarantee%20Boutique%20catalogue%20and%20have%20a%20question%20about%20an%20item." target="_blank" rel="noopener">Ask a question on WhatsApp</a>
+      <p class="card-note">The boutique&rsquo;s official — and only — order channel: <strong>WhatsApp 0308 7874678</strong>.</p>
+    </div>
+  </div>
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track" id="marqueeTrack">
+      <span>New drops first on TikTok <b>✦</b></span><span>Order in one tap <b>✦</b></span><span>Prices on every piece <b>✦</b></span><span>No &ldquo;price?&rdquo; DMs <b>✦</b></span><span>The shop never closes <b>✦</b></span><span>WhatsApp is the till <b>✦</b></span>
+      <span>New drops first on TikTok <b>✦</b></span><span>Order in one tap <b>✦</b></span><span>Prices on every piece <b>✦</b></span><span>No &ldquo;price?&rdquo; DMs <b>✦</b></span><span>The shop never closes <b>✦</b></span><span>WhatsApp is the till <b>✦</b></span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= THE PAIN ================= -->
+<section class="block" id="pain">
+  <div class="wrap">
+    <div class="pain-grid">
+      <div class="pain-copy rv">
+        <p class="sec-eyebrow">The 11pm problem</p>
+        <h2>Thousands of likes. <em>One pair of hands</em> answering chats.</h2>
+        <p>Every Guarantee Boutique post pulls in an audience most shops would envy. But there is no shop behind the posts — so every single admirer has to open a chat and start from zero: <strong>&ldquo;price?&rdquo; … &ldquo;size?&rdquo; … &ldquo;available?&rdquo;</strong></p>
+        <p>Meanwhile the boutique answers each one by hand, one at a time — and the customer who fell in love with a dress at midnight has usually scrolled on by morning. <strong>The likes were never the problem. The missing shop is.</strong></p>
+        <ul class="pain-list">
+          <li><span class="x" aria-hidden="true">✕</span><span>Orders bottlenecked through one chat thread, answered manually, in order, whenever she&rsquo;s awake.</span></li>
+          <li><span class="x" aria-hidden="true">✕</span><span>Yesterday&rsquo;s viral post is buried by tomorrow — the pieces in it stop selling even while they&rsquo;re still in stock.</span></li>
+          <li><span class="x" aria-hidden="true">✕</span><span>Customers can&rsquo;t browse. If it isn&rsquo;t in the latest three posts, to them it doesn&rsquo;t exist.</span></li>
+        </ul>
+      </div>
+      <div class="rv" style="--d:1">
+        <div class="phone" role="img" aria-label="Illustration of a WhatsApp chat where a buyer asks price, size and availability one message at a time, and the conversation goes quiet overnight.">
+          <div class="phone-screen">
+            <div class="phone-head">
+              <span class="avatar" aria-hidden="true">G</span>
+              <span><b>Guarantee Boutique</b><span>WhatsApp · only official order channel</span></span>
+            </div>
+            <div class="chat">
+              <div class="msg buyer">Salam! Saw the berry maxi on TikTok 😍 price?<small>11:04 pm</small></div>
+              <div class="msg buyer">And is it available in medium?<small>11:04 pm</small></div>
+              <div class="msg buyer">Also delivery to Karachi?<small>11:05 pm</small></div>
+              <div class="chat-note">🌙 The boutique is asleep — reply comes hours later</div>
+              <div class="msg faded buyer">Hello? Should I just order somewhere else…<small>9:12 am</small></div>
+              <div class="chat-note">💔 One tap could have finished this last night</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STATS BAND ================= -->
+<section class="stats on-dark" aria-label="How ordering works, in numbers">
+  <div class="wrap">
+    <div class="stats-grid">
+      <div class="stat rv"><div class="num"><span data-count="1">1</span></div><div class="lbl">tap from any piece straight to a written order</div></div>
+      <div class="stat rv" style="--d:1"><div class="num"><span data-count="3">3</span></div><div class="lbl">steps, total — browse, tap, confirm in chat</div></div>
+      <div class="stat rv" style="--d:2"><div class="num"><span data-count="60">60</span><span class="sfx">sec</span></div><div class="lbl">from &ldquo;I love it&rdquo; to order sent — no forms, no account</div></div>
+      <div class="stat rv" style="--d:3"><div class="num"><span data-count="24">24</span><span class="sfx">/7</span></div><div class="lbl">the catalogue is open — including midnight, when TikTok sells hardest</div></div>
+    </div>
+    <p class="fineprint-line">These numbers describe how the ordering works on this page — not sales results.</p>
+  </div>
+</section>
+
+<!-- ================= THE COLLECTION ================= -->
+<section class="block" id="shop">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="sec-eyebrow">The collection</p>
+      <h2>Every piece, <em>priced &amp; ready</em> — not buried in a feed</h2>
+      <p>Tap any piece to start your order. The message opens in WhatsApp already written — the boutique just confirms your size and address.</p>
+    </div>
+    <p class="sample-note rv"><b>Sample catalogue:</b> the pieces, artwork and prices below are placeholders demonstrating the design. On the live catalogue, every card carries Guarantee Boutique&rsquo;s real pieces, photos and prices.</p>
+
+    <div class="products">
+      <!-- 1 -->
+      <article class="product feature rv">
+        <div class="p-art g1">
+          <span class="badge">Sample item</span>
+          <svg viewBox="0 0 120 150" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M60 8c7 0 12 5 12 12 0 9-7 12-11 18-4 5-4 10-2 18l24 58c8 18 15 28 19 36H18c4-8 11-18 19-36l24-58c2-8 2-13-2-18-4-6-11-9-11-18C48 13 53 8 60 8Z"/><path d="M42 62c12 5 24 5 36 0" opacity=".7"/><circle cx="48" cy="92" r="2.4" fill="#fff" stroke="none"/><circle cx="72" cy="92" r="2.4" fill="#fff" stroke="none"/><circle cx="40" cy="118" r="2.4" fill="#fff" stroke="none"/><circle cx="80" cy="118" r="2.4" fill="#fff" stroke="none"/></svg>
+          <span class="drop-tag">The showpiece</span>
+        </div>
+        <div class="body">
+          <h3>Rose Pink Embroidered 3-Piece</h3>
+          <p>Sample product — an embroidered shirt, trouser and dupatta set like this one would sit here with the boutique&rsquo;s real photo.</p>
+          <div class="sizes">Sizes: S · M · L (sample)</div>
+          <div class="price">PKR 6,450 <small>· sample price</small></div>
+          <a class="btn btn-wa btn-order" href="https://wa.me/923087874678?text=Assalam%20o%20Alaikum!%20I%20want%20to%20order%20the%20Rose%20Pink%20Embroidered%203-Piece%20(sample%20item%201)%20from%20the%20Guarantee%20Boutique%20catalogue.%20Is%20it%20available%20in%20my%20size%3F" target="_blank" rel="noopener">Order on WhatsApp</a>
+        </div>
+      </article>
+
+      <!-- 2 -->
+      <article class="product rv" style="--d:1">
+        <div class="p-art g2">
+          <span class="badge">Sample item</span>
+          <svg viewBox="0 0 120 150" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M60 10c6 0 10 4 11 10l1 8 26 14c3 2 4 6 2 9l-4 6L76 46v88H44V46L24 57l-4-6c-2-3-1-7 2-9l26-14 1-8c1-6 5-10 11-10Z"/><path d="M52 34c5 3 11 3 16 0" opacity=".7"/></svg>
+          <span class="drop-tag">Festive edit</span>
+        </div>
+        <div class="body">
+          <h3>Deep Plum Festive Kurti</h3>
+          <p>Sample product — a festive kurti with hand-finished neckline detail, shown here as a layout placeholder.</p>
+          <div class="sizes">Sizes: S · M · L (sample)</div>
+          <div class="price">PKR 3,850 <small>· sample price</small></div>
+          <a class="btn btn-wa btn-order" href="https://wa.me/923087874678?text=Assalam%20o%20Alaikum!%20I%20want%20to%20order%20the%20Deep%20Plum%20Festive%20Kurti%20(sample%20item%202)%20from%20the%20Guarantee%20Boutique%20catalogue.%20Is%20it%20available%20in%20my%20size%3F" target="_blank" rel="noopener">Order on WhatsApp</a>
+        </div>
+      </article>
+
+      <!-- 3 -->
+      <article class="product rv" style="--d:2">
+        <div class="p-art g3">
+          <span class="badge">Sample item</span>
+          <svg viewBox="0 0 120 150" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M60 10c6 0 10 4 11 10l1 8 26 14c3 2 4 6 2 9l-4 6L76 46v40H44V46L24 57l-4-6c-2-3-1-7 2-9l26-14 1-8c1-6 5-10 11-10Z"/><path d="M44 96h32M48 96v44M72 96v44" opacity=".8"/><circle cx="52" cy="60" r="2.2" fill="#fff" stroke="none"/><circle cx="68" cy="70" r="2.2" fill="#fff" stroke="none"/><circle cx="56" cy="80" r="2.2" fill="#fff" stroke="none"/></svg>
+          <span class="drop-tag">Everyday bright</span>
+        </div>
+        <div class="body">
+          <h3>Mustard Printed 2-Piece</h3>
+          <p>Sample product — a bright printed two-piece for everyday wear, standing in for a real catalogue piece.</p>
+          <div class="sizes">Sizes: S · M · L (sample)</div>
+          <div class="price">PKR 4,250 <small>· sample price</small></div>
+          <a class="btn btn-wa btn-order" href="https://wa.me/923087874678?text=Assalam%20o%20Alaikum!%20I%20want%20to%20order%20the%20Mustard%20Printed%202-Piece%20(sample%20item%203)%20from%20the%20Guarantee%20Boutique%20catalogue.%20Is%20it%20available%20in%20my%20size%3F" target="_blank" rel="noopener">Order on WhatsApp</a>
+        </div>
+      </article>
+
+      <!-- 4 -->
+      <article class="product tall rv">
+        <div class="p-art g4">
+          <span class="badge">Sample item</span>
+          <svg viewBox="0 0 120 150" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M60 10c6 0 10 4 11 10l1 8 26 14c3 2 4 6 2 9l-4 6L76 46v88H44V46L24 57l-4-6c-2-3-1-7 2-9l26-14 1-8c1-6 5-10 11-10Z"/><path d="M50 44c6 8 14 8 20 0M50 62c6 8 14 8 20 0M50 80c6 8 14 8 20 0M50 98c6 8 14 8 20 0" opacity=".65"/></svg>
+          <span class="drop-tag">Hand-finished</span>
+        </div>
+        <div class="body">
+          <h3>Teal Chikankari Shirt</h3>
+          <p>Sample product — a chikankari-embroidered shirt, shown as a placeholder until the real piece is photographed.</p>
+          <div class="sizes">Sizes: S · M · L (sample)</div>
+          <div class="price">PKR 3,450 <small>· sample price</small></div>
+          <a class="btn btn-wa btn-order" href="https://wa.me/923087874678?text=Assalam%20o%20Alaikum!%20I%20want%20to%20order%20the%20Teal%20Chikankari%20Shirt%20(sample%20item%204)%20from%20the%20Guarantee%20Boutique%20catalogue.%20Is%20it%20available%20in%20my%20size%3F" target="_blank" rel="noopener">Order on WhatsApp</a>
+        </div>
+      </article>
+
+      <!-- 5 -->
+      <article class="product rv" style="--d:1">
+        <div class="p-art g5">
+          <span class="badge">Sample item</span>
+          <svg viewBox="0 0 120 150" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M60 8c7 0 12 5 12 12 0 9-7 12-11 18-4 5-4 10-2 18l24 58c8 18 15 28 19 36H18c4-8 11-18 19-36l24-58c2-8 2-13-2-18-4-6-11-9-11-18C48 13 53 8 60 8Z"/><path d="M38 74c14 6 30 6 44 0" opacity=".7"/></svg>
+          <span class="drop-tag">Season&rsquo;s lawn</span>
+        </div>
+        <div class="body">
+          <h3>Sage Green Lawn 3-Piece</h3>
+          <p>Sample product — a cool-toned lawn three-piece for the season, in place of a real catalogue listing.</p>
+          <div class="sizes">Sizes: S · M · L (sample)</div>
+          <div class="price">PKR 5,150 <small>· sample price</small></div>
+          <a class="btn btn-wa btn-order" href="https://wa.me/923087874678?text=Assalam%20o%20Alaikum!%20I%20want%20to%20order%20the%20Sage%20Green%20Lawn%203-Piece%20(sample%20item%205)%20from%20the%20Guarantee%20Boutique%20catalogue.%20Is%20it%20available%20in%20my%20size%3F" target="_blank" rel="noopener">Order on WhatsApp</a>
+        </div>
+      </article>
+
+      <!-- 6 -->
+      <article class="product rv" style="--d:2">
+        <div class="p-art g6">
+          <span class="badge">Sample item</span>
+          <svg viewBox="0 0 120 150" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M60 8c7 0 12 5 12 12 0 9-7 12-11 18-4 5-4 10-2 18l24 58c8 18 15 28 19 36H18c4-8 11-18 19-36l24-58c2-8 2-13-2-18-4-6-11-9-11-18C48 13 53 8 60 8Z"/><path d="M44 84h32" stroke-width="3"/><path d="M56 84l4 8 4-8" opacity=".8"/></svg>
+          <span class="drop-tag">Evening</span>
+        </div>
+        <div class="body">
+          <h3>Rust Orange Evening Dress</h3>
+          <p>Sample product — a flowing evening dress with belt detail, shown here purely to demonstrate the layout.</p>
+          <div class="sizes">Sizes: S · M · L (sample)</div>
+          <div class="price">PKR 7,950 <small>· sample price</small></div>
+          <a class="btn btn-wa btn-order" href="https://wa.me/923087874678?text=Assalam%20o%20Alaikum!%20I%20want%20to%20order%20the%20Rust%20Orange%20Evening%20Dress%20(sample%20item%206)%20from%20the%20Guarantee%20Boutique%20catalogue.%20Is%20it%20available%20in%20my%20size%3F" target="_blank" rel="noopener">Order on WhatsApp</a>
+        </div>
+      </article>
+
+      <!-- 7 -->
+      <article class="product rv">
+        <div class="p-art g7">
+          <span class="badge">Sample item</span>
+          <svg viewBox="0 0 120 150" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M60 8c7 0 12 5 12 12 0 9-7 12-11 18-4 5-4 10-2 18l24 58c8 18 15 28 19 36H18c4-8 11-18 19-36l24-58c2-8 2-13-2-18-4-6-11-9-11-18C48 13 53 8 60 8Z"/><path d="M40 108c13 5 27 5 40 0" opacity=".7"/></svg>
+          <span class="drop-tag">Most loved silhouette</span>
+        </div>
+        <div class="body">
+          <h3>Berry Pink Maxi Dress</h3>
+          <p>Sample product — a soft, full-length maxi in a rich berry tone, standing in for a real piece.</p>
+          <div class="sizes">Sizes: S · M · L (sample)</div>
+          <div class="price">PKR 5,850 <small>· sample price</small></div>
+          <a class="btn btn-wa btn-order" href="https://wa.me/923087874678?text=Assalam%20o%20Alaikum!%20I%20want%20to%20order%20the%20Berry%20Pink%20Maxi%20Dress%20(sample%20item%207)%20from%20the%20Guarantee%20Boutique%20catalogue.%20Is%20it%20available%20in%20my%20size%3F" target="_blank" rel="noopener">Order on WhatsApp</a>
+        </div>
+      </article>
+
+      <!-- 8 -->
+      <article class="product rv" style="--d:1">
+        <div class="p-art g8">
+          <span class="badge">Sample item</span>
+          <svg viewBox="0 0 120 150" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M60 10c6 0 10 4 11 10l1 8 26 14c3 2 4 6 2 9l-4 6L76 46v88H44V46L24 57l-4-6c-2-3-1-7 2-9l26-14 1-8c1-6 5-10 11-10Z"/><circle cx="60" cy="58" r="2.4" fill="#fff" stroke="none"/><circle cx="60" cy="76" r="2.4" fill="#fff" stroke="none"/><circle cx="60" cy="94" r="2.4" fill="#fff" stroke="none"/></svg>
+          <span class="drop-tag">Formal</span>
+        </div>
+        <div class="body">
+          <h3>Midnight Blue Formal 2-Piece</h3>
+          <p>Sample product — a deep-blue formal two-piece with subtle embellishment, as a layout placeholder.</p>
+          <div class="sizes">Sizes: S · M · L (sample)</div>
+          <div class="price">PKR 6,950 <small>· sample price</small></div>
+          <a class="btn btn-wa btn-order" href="https://wa.me/923087874678?text=Assalam%20o%20Alaikum!%20I%20want%20to%20order%20the%20Midnight%20Blue%20Formal%202-Piece%20(sample%20item%208)%20from%20the%20Guarantee%20Boutique%20catalogue.%20Is%20it%20available%20in%20my%20size%3F" target="_blank" rel="noopener">Order on WhatsApp</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HOW ORDERING WORKS ================= -->
+<section class="block" id="how" style="padding-top:20px">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="sec-eyebrow">Effortless by design</p>
+      <h2>Three steps. <em>No homework.</em></h2>
+      <p>The whole shop runs through the WhatsApp you already know — the catalogue just does the talking first.</p>
+    </div>
+    <div class="steps">
+      <div class="step rv">
+        <div class="n">1</div>
+        <h3>Pick your piece</h3>
+        <p>Browse the catalogue any time — prices and sizes sit on every card, so nobody has to message just to ask &ldquo;price please?&rdquo;</p>
+      </div>
+      <div class="step rv" style="--d:1">
+        <div class="n">2</div>
+        <h3>Tap &ldquo;Order on WhatsApp&rdquo;</h3>
+        <p>The button opens WhatsApp with the order already typed — the exact piece, named. All the customer does is press send.</p>
+      </div>
+      <div class="step rv" style="--d:2">
+        <div class="n">3</div>
+        <h3>Confirm in the chat</h3>
+        <p>The boutique confirms size, address and payment in the same chat — and the order is placed. That&rsquo;s the whole journey.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= LOVE NOTES (SAMPLE TESTIMONIALS) ================= -->
+<section class="block voices on-dark" id="voices">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="sec-eyebrow" style="color:var(--gold-soft)">Love notes</p>
+      <h2>What ordering <em>feels like</em> with a shop</h2>
+      <p>The review wall your customers will fill — shown here with sample words until the real ones land.</p>
+    </div>
+    <div class="carousel rv" id="carousel">
+      <div class="carousel-viewport">
+        <div class="carousel-track" id="carouselTrack">
+          <div class="t-slide">
+            <span class="sample-tag">Sample review · placeholder</span>
+            <div class="stars" aria-hidden="true">★★★★★</div>
+            <blockquote>&ldquo;Saw it on TikTok at midnight, ordered it before my tea went cold. No waiting, no twenty questions — just tap and done.&rdquo;</blockquote>
+            <p class="who"><b>Sample customer</b> · Karachi (placeholder)</p>
+          </div>
+          <div class="t-slide">
+            <span class="sample-tag">Sample review · placeholder</span>
+            <div class="stars" aria-hidden="true">★★★★★</div>
+            <blockquote>&ldquo;The price and sizes were right there on the page. I knew exactly what I was getting before I ever opened the chat.&rdquo;</blockquote>
+            <p class="who"><b>Sample customer</b> · Lahore (placeholder)</p>
+          </div>
+          <div class="t-slide">
+            <span class="sample-tag">Sample review · placeholder</span>
+            <div class="stars" aria-hidden="true">★★★★★</div>
+            <blockquote>&ldquo;I found a piece from a post weeks old and could still order it in one tap. The whole collection in one place is dangerous for my wallet.&rdquo;</blockquote>
+            <p class="who"><b>Sample customer</b> · Islamabad (placeholder)</p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-nav">
+        <button class="c-btn" id="cPrev" type="button" aria-label="Previous sample review">←</button>
+        <div class="dots" id="cDots" role="tablist" aria-label="Choose sample review"></div>
+        <button class="c-btn" id="cNext" type="button" aria-label="Next sample review">→</button>
+      </div>
+      <p class="fineprint-line">All reviews above are layout placeholders — Guarantee Boutique has not published customer reviews here, and none are claimed as real.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOR THE BOUTIQUE (OWNER PITCH) ================= -->
+<section class="block" id="owner">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="sec-eyebrow">For the boutique</p>
+      <h2>A shop that sells <em>while you sleep</em></h2>
+      <p>This page is the pitch, Guarantee Boutique: the audience is already yours. This is what changes when it gets a shop window.</p>
+    </div>
+    <div class="bento">
+      <div class="b-card wide dark rv">
+        <p class="big">Your TikTok brings the crowd.<br>This catalogue takes the orders.</p>
+        <p>One link in your bio and under every post turns thousands of viewers into shoppers who can actually finish buying — no chat obstacle course first.</p>
+      </div>
+      <div class="b-card rv" style="--d:1">
+        <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#57163a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"/></svg></div>
+        <h3>Orders arrive half-finished</h3>
+        <p>The chat opens with the exact piece already named — the conversation starts at confirmation, not at &ldquo;price?&rdquo;.</p>
+      </div>
+      <div class="b-card rv" style="--d:2">
+        <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#57163a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+        <h3>Open at 3 AM</h3>
+        <p>A post scrolls away in a day; the catalogue never closes. Last month&rsquo;s viewers can still buy this month&rsquo;s stock.</p>
+      </div>
+      <div class="b-card rv">
+        <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#57163a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a5 5 0 0 0 7.07 0l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 10a5 5 0 0 0-7.07 0l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>
+        <h3>Every post, a storefront</h3>
+        <p>Pin the catalogue link once — every past and future video becomes a doorway into the shop, forever.</p>
+      </div>
+      <div class="b-card rv" style="--d:1">
+        <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#57163a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></div>
+        <h3>Same WhatsApp, less work</h3>
+        <p>Nothing about your process changes — customers still order on your official number. The manual questions in front of it disappear.</p>
+      </div>
+      <div class="b-card wide rv" style="--d:2">
+        <h3>What we need from you to make it real</h3>
+        <p>Photos and real prices for your first 12 pieces — that&rsquo;s all. The placeholders on this page are swapped for your actual catalogue, you approve the final version, and only then does it go live under your name.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="block" id="faq" style="padding-top:16px">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="sec-eyebrow">Good questions</p>
+      <h2>Before you <em>tap order</em></h2>
+    </div>
+    <div class="faq rv">
+      <details>
+        <summary>How do I pay?</summary>
+        <p class="a">Payment is arranged directly with the boutique in your WhatsApp chat when you confirm the order — the same conversation where you confirm your size and delivery address.</p>
+      </details>
+      <details>
+        <summary>Why does ordering happen on WhatsApp?</summary>
+        <p class="a">Because that&rsquo;s how Guarantee Boutique has always sold — WhatsApp 0308 7874678 is the boutique&rsquo;s only official order channel. This catalogue simply removes the back-and-forth in front of it: prices and sizes are here, and your order arrives in the chat already written.</p>
+      </details>
+      <details>
+        <summary>What if my size isn&rsquo;t listed?</summary>
+        <p class="a">Sizes on each card show the usual range. Tap the order button anyway and ask in the chat — the boutique confirms exact availability before anything is final.</p>
+      </details>
+      <details>
+        <summary>I saw a piece on TikTok that isn&rsquo;t here. Can I still get it?</summary>
+        <p class="a">Yes — message the boutique on WhatsApp and mention the post. If the piece is still in stock, it can be added to the catalogue and ordered the same way.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FINAL CTA ================= -->
+<section class="block" style="padding-top:8px">
+  <div class="wrap">
+    <div class="cta-band rv">
+      <h2>Your next favourite piece is <em>one tap away.</em></h2>
+      <p>Browse the drop, tap the piece, press send. Ordered — before the scroll takes you somewhere else.</p>
+      <a class="btn btn-wa" href="https://wa.me/923087874678?text=Assalam%20o%20Alaikum!%20I%20am%20browsing%20the%20Guarantee%20Boutique%20catalogue%20and%20want%20to%20place%20an%20order." target="_blank" rel="noopener">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.83 9.83 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.23 8.23Zm4.52-6.16c-.25-.13-1.47-.72-1.69-.8-.23-.09-.39-.13-.56.12-.16.25-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.13-1.05-.39-2-1.23-.73-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.35-.77-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.13.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.6.19 1.13.16 1.56.1.48-.07 1.47-.58 1.74-1.14.27-.56.27-1.04.19-1.14-.08-.1-.23-.16-.48-.28Z"/></svg>
+        Start an order on WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div style="max-width:300px">
+        <div class="logo" style="margin-bottom:12px">
+          <span class="mark" aria-hidden="true">
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a2.5 2.5 0 0 1 2.5 2.5c0 1.9-2.5 2.1-2.5 4"/><path d="M12 9.5 3.6 15a2.4 2.4 0 0 0 1.1 4.3h14.6A2.4 2.4 0 0 0 20.4 15L12 9.5Z"/></svg>
+          </span>
+          <span>Guarantee Boutique</span>
+        </div>
+        <p style="font-size:.9rem">Women&rsquo;s clothing, online in Pakistan — browse the catalogue here, order in one tap on WhatsApp, and follow @guarantee.boutique on TikTok for every new drop.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#shop">The Collection</a></li>
+          <li><a href="#how">How to Order</a></li>
+          <li><a href="#voices">Love Notes</a></li>
+          <li><a href="#owner">For the Boutique</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Good to know</h4>
+        <ul>
+          <li><a href="#shop">Prices &amp; sizes on every card</a></li>
+          <li><a href="#how">Orders confirmed in chat</a></li>
+          <li><a href="#faq">Ordering questions</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li>WhatsApp — only official order channel</li>
+          <li>0308 7874678</li>
+          <li>TikTok: @guarantee.boutique</li>
+          <li>Online only — Pakistan</li>
+        </ul>
+      </div>
+    </div>
+    <div class="fineprint">
+      <p>Demo catalogue — a free speculative sample designed &amp; built by RozContent for Guarantee Boutique. Not the boutique&rsquo;s live website.</p>
+      <p>All products, artwork, prices and sizes shown are sample placeholders for design demonstration, to be replaced with the boutique&rsquo;s real pieces at launch. All customer reviews shown are sample placeholders — no real reviews, sales figures or ratings are claimed. © 2026 Guarantee Boutique, Pakistan.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= STICKY MOBILE ORDER BAR ================= -->
+<div class="sticky-bar" id="stickyBar">
+  <a class="btn btn-browse" href="#shop">Browse pieces</a>
+  <a class="btn btn-wa" href="https://wa.me/923087874678?text=Assalam%20o%20Alaikum!%20I%20am%20browsing%20the%20Guarantee%20Boutique%20catalogue%20and%20want%20to%20place%20an%20order." target="_blank" rel="noopener">Order on WhatsApp</a>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* Header state */
+  var header = document.getElementById("siteHeader");
+  var sticky = document.getElementById("stickyBar");
+  function onScrollState(){
+    if (window.scrollY > 30) header.classList.add("scrolled"); else header.classList.remove("scrolled");
+    if (window.scrollY > 520) sticky.classList.add("show"); else sticky.classList.remove("show");
+  }
+  window.addEventListener("scroll", onScrollState, {passive:true});
+  onScrollState();
+
+  /* Scroll-triggered reveals */
+  var rvEls = document.querySelectorAll(".rv");
+  if ("IntersectionObserver" in window && !reduced){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); }
+      });
+    }, {threshold:.14, rootMargin:"0px 0px -6% 0px"});
+    rvEls.forEach(function(el){ io.observe(el); });
+  } else {
+    rvEls.forEach(function(el){ el.classList.add("in"); });
+  }
+
+  /* Animated counters (mechanism numbers; final values already in markup) */
+  function animateCount(el){
+    var target = parseInt(el.getAttribute("data-count"), 10);
+    if (isNaN(target)) return;
+    if (reduced){ el.textContent = target; return; }
+    var dur = 1100, start = null;
+    function tick(ts){
+      if (!start) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(target * eased);
+      if (p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  var counters = document.querySelectorAll("[data-count]");
+  if ("IntersectionObserver" in window){
+    var cio = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ animateCount(e.target); cio.unobserve(e.target); }
+      });
+    }, {threshold:.5});
+    counters.forEach(function(el){ cio.observe(el); });
+  } else {
+    counters.forEach(animateCount);
+  }
+
+  /* Subtle hero parallax (transform-only, disabled for reduced motion) */
+  var pEls = document.querySelectorAll("[data-parallax]");
+  if (pEls.length && !reduced){
+    var ticking = false;
+    window.addEventListener("scroll", function(){
+      if (!ticking){
+        requestAnimationFrame(function(){
+          var y = window.scrollY;
+          if (y < window.innerHeight * 1.2){
+            pEls.forEach(function(el){
+              var sp = parseFloat(el.getAttribute("data-parallax")) || 0.15;
+              el.style.transform = "translateY(" + (y * sp).toFixed(1) + "px)";
+            });
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, {passive:true});
+  }
+
+  /* Testimonial carousel */
+  var track = document.getElementById("carouselTrack");
+  if (track){
+    var slides = track.children.length;
+    var dotsWrap = document.getElementById("cDots");
+    var idx = 0, timer = null;
+    for (var i = 0; i < slides; i++){
+      var d = document.createElement("button");
+      d.type = "button";
+      d.className = "dot" + (i === 0 ? " active" : "");
+      d.setAttribute("aria-label", "Show sample review " + (i + 1));
+      d.setAttribute("data-i", i);
+      dotsWrap.appendChild(d);
+    }
+    var dots = dotsWrap.querySelectorAll(".dot");
+    function go(n){
+      idx = (n + slides) % slides;
+      track.style.transform = "translateX(-" + (idx * 100) + "%)";
+      dots.forEach(function(dt, k){ dt.classList.toggle("active", k === idx); });
+    }
+    function auto(){
+      if (reduced) return;
+      stop();
+      timer = setInterval(function(){ go(idx + 1); }, 5500);
+    }
+    function stop(){ if (timer) clearInterval(timer); }
+    document.getElementById("cPrev").addEventListener("click", function(){ go(idx - 1); auto(); });
+    document.getElementById("cNext").addEventListener("click", function(){ go(idx + 1); auto(); });
+    dots.forEach(function(dt){
+      dt.addEventListener("click", function(){ go(parseInt(dt.getAttribute("data-i"), 10)); auto(); });
+    });
+    var car = document.getElementById("carousel");
+    car.addEventListener("mouseenter", stop);
+    car.addEventListener("mouseleave", auto);
+    car.addEventListener("focusin", stop);
+    car.addEventListener("focusout", auto);
+    auto();
+  }
+})();
+</script>
+</body>
+</html>
